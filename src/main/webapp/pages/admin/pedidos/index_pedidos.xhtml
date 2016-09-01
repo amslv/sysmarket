@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Listagem de Pedidos</ui:define>
+
+	<ui:define name="content">
+		<br></br>
+		<h2>Listagem de Pedidos</h2>
+		<h:form>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:outputLabel>Filtrar:</p:outputLabel>
+					<p:inputText style="margin-left:5px;" value="#{indexPedido.filtro}"
+						placeholder="Digite o número do pedido"></p:inputText>
+					<p:commandButton
+						style="margin-left:5px; background: #000000; border: 1px solid #000000	"
+						icon="fa fa-fw fa-search" update=":tabelaPedidos"></p:commandButton>
+				</p:toolbarGroup>
+			</p:toolbar>
+		</h:form>
+		<p:dataTable id="tabelaPedidos" rows="10" paginator="true"
+			style="padding-bottom:30px; padding-top:10px;" var="ped"
+			value="#{indexPedido.pedidos}">
+			<p:column headerText="Id" styleClass="centralizarTexto">
+				<h:outputText value="#{ped.id}" />
+			</p:column>
+
+			<p:column headerText="Nome do cliente" style="text-align: center">
+				<h:outputText value="#{ped.cliente.nome}" />
+			</p:column>
+
+			<p:column headerText="Data do pedido" style="text-align: center">
+				<h:outputText value="#{ped.dataPedido}">
+					<f:convertDateTime locale="pt_BR" timeStyle="short"
+						pattern="dd/MM/yyyy 'às' HH:mm" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Valor do Pedido" style="text-align: center">
+				<h:outputText value="#{ped.valor}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</p:column>
+			<div>
+				<p:column headerText="Visualizar" style="text-align: center">
+					<p:link id="linkEditProd" value="Visualizar/Editar">
+						<f:param name="id" value="#{ped.id}"></f:param>
+					</p:link>
+				</p:column>
+			</div>
+			<p:column headerText="Excluir"
+				styleClass="centralizarTexto">
+				<h:form>
+					<p:commandLink value="Excluir"
+						update=":tabelaPedidos">
+						<p:confirm header="Atenção"
+							message="Tem certeza que deseja excluir o pedido #{ped.id}?"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</h:form>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

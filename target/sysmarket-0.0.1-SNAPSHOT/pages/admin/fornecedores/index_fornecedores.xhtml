@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Listagem de Fornecedores</ui:define>
+
+	<ui:define name="content">
+		<br></br>
+		<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+		</h:form>
+		<h2>Listagem de Fornecedores</h2>
+
+		<p:toolbar>
+			<p:toolbarGroup align="left">
+				<p:button id="nvForn" value="Novo Fornecedor"
+					icon="fa fa-fw fa-plus"
+					style="background: #000000; border: 1px solid #000000;" outcome="edit_fornecedor.xhtml">
+				</p:button>
+			</p:toolbarGroup>
+		</p:toolbar>
+		<p:dataTable id="tbl_forn" rows="5" paginator="true"
+			style="padding-bottom:30px; padding-top:10px;" var="forn"
+			value="#{indexFornecedores.fornecedores}" emptyMessage="Não existem fornecedores cadastrados no sistema.">
+			<f:facet name="header">
+				Fornecedores
+			</f:facet>
+			<p:column headerText="Id" style="text-align: center;">
+				<h:outputText value="#{forn.id}" />
+			</p:column>
+
+			<p:column headerText="Nome Fantasia" styleClass="centralizarTexto">
+				<h:outputText value="#{forn.nomeFantasia}" />
+			</p:column>
+
+			<p:column headerText="Razão Social" styleClass="centralizarTexto">
+				<h:outputText value="#{forn.razaoSocial}" />
+			</p:column>
+
+			<p:column headerText="CNPJ" styleClass="centralizarTexto">
+				<h:outputText value="#{forn.cnpj}" />
+			</p:column>
+
+			<p:column headerText="Endereço" styleClass="centralizarTexto">
+				<p:commandButton id="end" value="Visualizar Endereco"
+					icon="fa fa-fw fa-plus-square"></p:commandButton>
+			</p:column>
+
+			<p:column headerText="E-mail" styleClass="centralizarTexto">
+				<h:outputText value="#{forn.email}">
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Telefone" styleClass="centralizarTexto">
+				<h:outputText value="#{forn.telefone}">
+				</h:outputText>
+			</p:column>
+
+			<div>
+				<p:column headerText="Editar" styleClass="centralizarTexto">
+					<p:link id="linkEditProd" outcome="edit_fornecedores.xhtml"
+						value="Editar">
+						<f:param name="id" value="#{forn.id}"></f:param>
+					</p:link>
+				</p:column>
+			</div>
+			<p:column headerText="Excluir"
+				rendered="#{request.isUserInRole('admin')}"
+				styleClass="centralizarTexto">
+
+				<h:form>
+
+					<p:commandLink value="Excluir"
+						actionListener="#{fornecedorLista.excluir(forn)}"
+						update=":tabelaFornecedores">
+						<p:confirm header="Atenção"
+							message="Tem certeza que deseja excluir #{forn.nomeFantasia}?"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</h:form>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

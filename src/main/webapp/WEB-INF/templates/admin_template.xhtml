@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title><ui:insert name="title"></ui:insert></title>
+
+	<h:outputStylesheet library="sysmarket" name="styles/custom.css" />
+	<h:outputStylesheet library="sysmarket" name="styles/layout.css" />
+	<h:outputStylesheet library="sysmarket" name="styles/components.css" />
+
+	<h:outputScript target="body" library="primefaces"
+		name="jquery/jquery.js" />
+	<h:outputScript target="body" library="sysmarket"
+		name="javascripts/app.js" />
+</h:head>
+
+<h:body>
+
+	<header class="aw-topbar">
+		<h:graphicImage library="sysmarket" name="images/logo.png" />
+		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
+	</header>
+
+	<aside class="aw-sidebar  js-sidebar">
+
+		<nav class="aw-menu">
+			<ul>
+				<li><h:link>
+						
+						<i class="fa  fa-fw  fa-home"></i>Dashboard</h:link></li>
+				<li><h:link
+						outcome="/pages/admin/estoque/categorias/insert_categoria.xhtml">
+						<i class="fa  fa-fw  fa-bars"></i>Categorias</h:link></li>
+				<li><h:link
+						outcome="/pages/admin/clientes/cadastro_cliente.xhtml">
+						<i class="fa  fa-fw  fa-user"></i>Clientes</h:link></li>
+				<li><h:link
+						outcome="/pages/admin/fornecedores/index_fornecedores.xhtml">
+						<i class="fa  fa-fw  fa-users"></i>Fornecedores</h:link></li>
+				<li><h:link outcome="/pages/admin/estoque/produtos/index_produtos.xhtml">
+						<i class="fa  fa-fw  fa-shopping-basket"></i>Produtos</h:link></li>
+				<li><h:link outcome="/pages/admin/pedidos/index_pedidos.xhtml">
+						<i class="fa  fa-fw  fa-shopping-cart"></i>Pedidos</h:link></li>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<li><h:link>
+					<i class="fa  fa-fw  fa-sign-out"></i>Logout</h:link>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+	<section class="aw-content  js-content">
+		<ui:insert name="content" />
+	</section>
+
+</h:body>
+
+</html>

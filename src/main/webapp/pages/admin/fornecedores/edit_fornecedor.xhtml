@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Gerenciamento de Fornecedores</ui:define>
+
+	<f:metadata>
+		<o:viewParam name="id" value="#{editFornecedorBean.fornecedor}"
+			converter="#{fornecedorConverter}" />
+		<f:event listener="#{editFornecedorBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<br></br>
+		<h2>Cadastro/Edição de Fornecedores</h2>
+		<h:form id="formEdicaoFornecedores">
+			<p:messages closable="true" id="messages" showIcon="true"></p:messages>
+			<p:fieldset>
+				<p:tabView>
+					<p:tab title="Informações Básicas">
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+							styleClass="panelgrid-noborder">
+							<p:outputLabel value="Nome Fantasia:" for="nome_fantasia" />
+							<p:inputText id="nome_fantasia" required="true"
+								value="#{editFornecedorBean.fornecedor.nomeFantasia}" />
+							<p:outputLabel value="Razão Social:" for="razao_social" />
+							<p:inputText id="razao_social" required="true"
+								value="#{editFornecedorBean.fornecedor.razaoSocial}" />
+							<p:outputLabel value="CNPJ:" for="cnpj" />
+							<p:inputMask mask="99.999.999/9999-99" id="cnpj" required="true"
+								value="#{editFornecedorBean.fornecedor.cnpj}"></p:inputMask>
+							<p:outputLabel value="E-mail:" for="email" />
+							<p:inputText required="true" type="email" id="email"
+								value="#{editFornecedorBean.fornecedor.email}"></p:inputText>
+							<p:outputLabel value="Telefone Celular:" for="celular" />
+							<p:inputMask mask="(99) 99999-9999" id="celular"
+								value="#{editFornecedorBean.fornecedor.telefone}"
+								required="true"></p:inputMask>
+						</p:panelGrid>
+					</p:tab>
+					<p:tab title="Endereço">
+						<p:toolbar>
+							<p:toolbarGroup align="left">
+								<p:commandButton id="novoEndereco" value="Cadastrar Endereço"
+									icon="fa fa-fw fa-plus"
+									oncomplete="PF('novoEnderecoDialog').show()"></p:commandButton>
+							</p:toolbarGroup>
+						</p:toolbar>
+						<p:dataTable id="tabelaEnderecos"
+							value="#{editFornecedorBean.enderecos}" var="endereco"
+							selection="#{editFornecedorBean.enderecoSelecionado}"
+							rowKey="#{endereco.id}" reflow="true">
+							<f:facet name="header">
+								Endereços Cadastrados no Sistema
+							</f:facet>
+							<p:column selectionMode="single">
+							</p:column>
+							<p:column headerText="ID" priority="6">
+							</p:column>
+							<p:column headerText="CEP" priority="2">
+							</p:column>
+							<p:column headerText="Rua" priority="6">
+							</p:column>
+							<p:column headerText="Bairro" priority="2">
+							</p:column>
+							<p:column headerText="Cidade" priority="6">
+							</p:column>
+							<p:column headerText="UF" priority="2">
+							</p:column>
+						</p:dataTable>
+					</p:tab>
+					<p:tab title="Produtos Fornecidos">
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+							styleClass="panelgrid-noborder">
+							<p:pickList filterMatchMode="contains" showSourceFilter="true"
+								showTargetFilter="true" showCheckbox="true"
+								value="#{editFornecedorBean.produtosDisponíveis}" var="produto"
+								itemLabel="#{produto.nome}" itemValue="#{produto}">
+								<f:facet name="sourceCaption">
+									Produtos Disponíveis
+								</f:facet>
+								<f:facet name="targetCaption">
+									Produtos Selecionados
+								</f:facet>
+								<o:converter converterId="omnifaces.ListConverter"
+									list="#{editFornecedorBean.produtosDisponíveis.source}"></o:converter>
+							</p:pickList>
+						</p:panelGrid>
+					</p:tab>
+				</p:tabView>
+			</p:fieldset>
+			<p:separator></p:separator>
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton id="submit" value="Salvar Fornecedor"
+						icon="fa fa-fw fa-check"
+						action="#{editFornecedorBean.saveFornecedor}"
+						style="background: #000000; border: 1px solid #000000;">
+					</p:commandButton>
+					<p:button id="cancelar" value="Cancelar" icon="fa fa-fw fa-close"
+						outcome="index_fornecedores"
+						style="background: #000000; border: 1px solid #000000;">
+					</p:button>
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"
+				header="Cadastrar novo Endereço" resizable="false" responsive="true">
+				<h:panelGroup id="novoEnderecoPanel" layout="block"
+					styleClass="ui-fluid">
+					<p:messages autoUpdate="false"></p:messages>
+					<p:panelGrid columns="2" layout="grid"
+						styleClass="panelgrid-noborder"
+						columnClasses="ui-grid-col-4, ui-grid-col-8">
+						<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
+						<p:inputMask id="cep" required="true" mask="99999-999"
+							value="#{enderecoEdit.endereco.cep}"></p:inputMask>
+						<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
+						<p:inputText id="rua" required="true"
+							value="#{enderecoEdit.endereco.rua}"></p:inputText>
+						<p:outputLabel for="numero" value="Número:"></p:outputLabel>
+						<p:inputText id="numero" required="true"
+							value="#{enderecoEdit.endereco.numero}"></p:inputText>
+						<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
+						<p:inputText id="bairro" required="true"
+							value="#{enderecoEdit.endereco.bairro}"></p:inputText>
+						<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
+						<p:inputText id="cidade" required="true"></p:inputText>
+						<p:outputLabel for="estado" value="Estado:"></p:outputLabel>
+						<p:selectOneMenu id="estado"
+							value="#{enderecoEdit.endereco.estado}" required="true">
+							<f:selectItems value="#{enderecoEdit.estados}" var="estado"
+								itemLabel="#{estado.nome}" itemValue="#{estado}"></f:selectItems>
+						</p:selectOneMenu>
+						<p:commandButton id="saveEndereco" value="Gravar Endereço" icon="fa fa-fw fa-check"
+							action="#{enderecoEdit.saveEndereco}"></p:commandButton>
+					</p:panelGrid>
+				</h:panelGroup>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

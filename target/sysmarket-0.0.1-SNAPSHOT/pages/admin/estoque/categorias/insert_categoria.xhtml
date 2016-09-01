@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Categorias</ui:define>
+
+	<ui:define name="content">
+		<br></br>
+		<h2>Gerenciamento de Categorias</h2>
+		<p:fieldset legend="Cadastro de Categorias"
+			style="margin-top:20px; width:620px">
+			<h:form>
+				<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
+					closable="true"></p:messages>
+				<p:panelGrid columns="2" style="width:600px;" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+					styleClass="panelgrid-noborder">>
+					<p:outputLabel for="nome" indicateRequired="true">Nome:</p:outputLabel>
+					<p:inputText label="Nome" id="nome" required="true"
+						value="#{categoriaInsert.categoria.nome}" size="40"></p:inputText>
+					<p:outputLabel></p:outputLabel>
+					<p:commandButton
+						style="background: #000000; border: 1px solid #000000;"
+						value="Cadastrar" icon="fa fa-fw fa-plus" id="submit"
+						action="#{categoriaInsert.insertCategoria}"
+						update=":tabelaCategorias"></p:commandButton>
+				</p:panelGrid>
+			</h:form>
+			<p:panelGrid columns="1" style="width:600px;">
+				<p:dataTable id="tabelaCategorias"
+					style="padding-bottom:30px; padding-top:10px;" var="cat"
+					value="#{categoriaInsert.categorias}" reflow="true">
+					<f:facet name="header">
+            			Categorias Cadastradas
+        			</f:facet>
+					<p:column headerText="Nome" styleClass="centralizarTexto">
+						<h:outputText value="#{cat.nome}" />
+					</p:column>
+					<p:column headerText="Ação" style="text-align: center">
+						<h:form>
+							<p:commandButton actionListener="#{categoriaInsert.excluir(cat)}"
+								update=":tabelaCategorias" icon="fa fa-fw fa-close"
+								style="background: #000000; border: 1px solid #000000;">
+								<p:confirm header="Atenção"
+									message="Tem certeza que deseja excluir a categoria: #{cat.nome}?"
+									icon="fa fa-fw fa-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									style="background: #000000; border: 1px solid #000000;"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Não" type="button"
+									style="background: #000000; border: 1px solid #000000;"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:panelGrid>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+
+</html>

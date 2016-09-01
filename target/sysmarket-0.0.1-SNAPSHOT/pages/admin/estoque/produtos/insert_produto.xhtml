@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="id" value="#{produtoInsert.produto}"
+			converter="#{produtoConverter}" />
+		<f:event listener="#{produtoInsert.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="title">Sysmarket :: Gerenciamento de Produtos</ui:define>
+
+	<ui:define name="content">
+		<br></br>
+		<h2>Cadastro/Edição de Produtos</h2>
+		<p:fieldset legend="Cadastro de produtos" style="margin-top:20px;">
+			<h:form>
+				<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
+					closable="true"></p:messages>
+				<p:panelGrid columns="4" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+					styleClass="panelgrid-noborder">
+					<p:outputLabel for="nome" value="Nome: "></p:outputLabel>
+					<p:inputText id="nome" required="true"
+						value="#{produtoInsert.produto.nome}"></p:inputText>
+
+					<p:outputLabel for="descricao"
+						value="Descrição: "></p:outputLabel>
+					<p:inputTextarea id="descricao" required="true" rows="3"
+						placeholder="Descrição do Produto."
+						value="#{produtoInsert.produto.descricao}">
+					</p:inputTextarea>
+					<p:outputLabel for="sku" value="SKU: "></p:outputLabel>
+					<p:inputText id="sku" required="true"
+						value="#{produtoInsert.produto.sku}"></p:inputText>
+					<p:outputLabel for="qtd" value="Quantidade em Estoque: "></p:outputLabel>
+					<p:inputText id="qtd" value="#{produtoInsert.produto.quantidade}">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>
+					<p:outputLabel for="qtdm" value="Quantidade Mínima: "></p:outputLabel>
+					<p:inputText id="qtdm"
+						value="#{produtoInsert.produto.quantidadeMinima}"
+						placeholder="Quantidade mínima que deve ter em estoque.">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>
+
+					<p:outputLabel for="Categoria" value="Categoria: "></p:outputLabel>
+					<p:selectOneMenu label="Categoria" id="Categoria"
+						value="#{produtoInsert.produto.categoria}" effect="fold"
+						required="true" converter="#{categoriaConverter}"
+						style="width:45%; hover: #000000;">
+						<f:selectItems value="#{produtoInsert.categorias}" var="cat"
+							itemValue="#{cat}" itemLabel="#{cat.nome}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="Custo" value="Valor de Compra: "></p:outputLabel>
+					<p:inputText label="Preço de Custo" id="Custo"
+						value="#{produtoInsert.produto.valorCompra}" required="true">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>
+
+					<p:outputLabel for="PrecoVenda" value="Valor de Venda: "></p:outputLabel>
+					<p:inputText label="Preço de Venda" id="PrecoVenda"
+						value="#{produtoInsert.produto.valorVenda}" required="true">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>
+				</p:panelGrid>
+				<p:commandButton icon="fa fa-fw fa-check" value="Salvar" id="submit"
+					action="#{produtoInsert.saveProduto()}"
+					style="background: #000000; border: 1px solid #000000"></p:commandButton>
+				<p:button icon="fa fa-fw fa-close" value="Cancelar"
+					outcome="index_produtos"
+					style="background: #000000; border: 1px solid #000000"></p:button>
+			</h:form>
+		</p:fieldset>
+
+	</ui:define>
+</ui:composition>
+</html>
