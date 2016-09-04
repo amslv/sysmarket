@@ -43,35 +43,40 @@
 								value="#{editFornecedorBean.fornecedor.email}"></p:inputText>
 							<p:outputLabel value="Telefone Celular:" for="celular" />
 							<p:inputMask mask="(99) 99999-9999" id="celular"
-								value="#{editFornecedorBean.fornecedor.telefone}"></p:inputMask>
+								value="#{editFornecedorBean.fornecedor.telefone}"
+								required="true"></p:inputMask>
 						</p:panelGrid>
 					</p:tab>
 					<p:tab title="Endereço">
-						<p:panelGrid columns="4" layout="grid"
-							columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
-							styleClass="panelgrid-noborder">
-							<p:outputLabel value="CEP:" for="cep" />
-							<p:inputMask mask="99999-999" id="cep" required="true"
-								value="#{editFornecedorBean.fornecedor.endereco.cep}"></p:inputMask>
-							<p:outputLabel value="Nome da Rua:" for="rua" />
-							<p:inputText id="rua" required="true"
-								value="#{editFornecedorBean.fornecedor.endereco.rua}"></p:inputText>
-							<p:outputLabel value="Número: " for="numero" />
-							<p:inputText id="numero" required="true"
-								value="#{editFornecedorBean.fornecedor.endereco.numero}"></p:inputText>
-							<p:outputLabel value="Bairro:" for="bairro" />
-							<p:inputText id="bairro" required="true"
-								value="#{editFornecedorBean.fornecedor.endereco.bairro}"></p:inputText>
-							<p:outputLabel value="Estado:" for="estado" />
-							<p:selectOneMenu id="estado"
-								value="#{editFornecedorBean.fornecedor.endereco.estado}"
-								converter="#{estadoConverter}">
-								<f:selectItems value="#{editFornecedorBean.estados}"
-									var="estado" itemLabel="#{estado.sigla}" itemValue="#{estado}"></f:selectItems>
-							</p:selectOneMenu>
-							<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
-							<p:inputText id="cidade"></p:inputText>
-						</p:panelGrid>
+						<p:toolbar>
+							<p:toolbarGroup align="left">
+								<p:commandButton id="novoEndereco" value="Cadastrar Endereço"
+									icon="fa fa-fw fa-plus"
+									oncomplete="PF('novoEnderecoDialog').show()"></p:commandButton>
+							</p:toolbarGroup>
+						</p:toolbar>
+						<p:dataTable id="tabelaEnderecos"
+							value="#{editFornecedorBean.enderecos}" var="endereco"
+							selection="#{editFornecedorBean.enderecoSelecionado}"
+							rowKey="#{endereco.id}" reflow="true">
+							<f:facet name="header">
+								Endereços Cadastrados no Sistema
+							</f:facet>
+							<p:column selectionMode="single">
+							</p:column>
+							<p:column headerText="ID" priority="6">
+							</p:column>
+							<p:column headerText="CEP" priority="2">
+							</p:column>
+							<p:column headerText="Rua" priority="6">
+							</p:column>
+							<p:column headerText="Bairro" priority="2">
+							</p:column>
+							<p:column headerText="Cidade" priority="6">
+							</p:column>
+							<p:column headerText="UF" priority="2">
+							</p:column>
+						</p:dataTable>
 					</p:tab>
 					<p:tab title="Produtos Fornecidos">
 						<p:panelGrid columns="4" layout="grid"
@@ -108,6 +113,39 @@
 					</p:button>
 				</p:toolbarGroup>
 			</p:toolbar>
+			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"
+				header="Cadastrar novo Endereço" resizable="false" responsive="true">
+				<h:panelGroup id="novoEnderecoPanel" layout="block"
+					styleClass="ui-fluid">
+					<p:messages autoUpdate="false"></p:messages>
+					<p:panelGrid columns="2" layout="grid"
+						styleClass="panelgrid-noborder"
+						columnClasses="ui-grid-col-4, ui-grid-col-8">
+						<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
+						<p:inputMask id="cep" required="true" mask="99999-999"
+							value="#{enderecoEdit.endereco.cep}"></p:inputMask>
+						<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
+						<p:inputText id="rua" required="true"
+							value="#{enderecoEdit.endereco.rua}"></p:inputText>
+						<p:outputLabel for="numero" value="Número:"></p:outputLabel>
+						<p:inputText id="numero" required="true"
+							value="#{enderecoEdit.endereco.numero}"></p:inputText>
+						<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
+						<p:inputText id="bairro" required="true"
+							value="#{enderecoEdit.endereco.bairro}"></p:inputText>
+						<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
+						<p:inputText id="cidade" required="true"></p:inputText>
+						<p:outputLabel for="estado" value="Estado:"></p:outputLabel>
+						<p:selectOneMenu id="estado"
+							value="#{enderecoEdit.endereco.estado}" required="true">
+							<f:selectItems value="#{enderecoEdit.estados}" var="estado"
+								itemLabel="#{estado.nome}" itemValue="#{estado}"></f:selectItems>
+						</p:selectOneMenu>
+						<p:commandButton id="saveEndereco" value="Gravar Endereço" icon="fa fa-fw fa-check"
+							action="#{enderecoEdit.saveEndereco}"></p:commandButton>
+					</p:panelGrid>
+				</h:panelGroup>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

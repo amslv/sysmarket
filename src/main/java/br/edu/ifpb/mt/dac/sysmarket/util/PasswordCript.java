@@ -27,9 +27,9 @@ public class PasswordCript {
 			String output = bigInt.toString(16);
 			return output;
 		} catch (NoSuchAlgorithmException e) {
-			throw new Exception("NÃ£o foi possÃ­vel criptografar a senha!");
+			throw new Exception("Nãoo foi possível criptografar a senha!");
 		} catch (UnsupportedEncodingException e) {
-			throw new Exception("NÃ£o foi possÃ­vel criptografar a senha!");
+			throw new Exception("Não foi possível criptografar a senha!");
 		}
 	}
 }

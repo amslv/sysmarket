@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+	<title>Sysmarket :: Login</title>
+</h:head>
+
+<h:body style="background: #D3D3D3;">
+	<header class="aw-topbar"
+		style="background: #000000; position: fixed; top: 0; right: 0; left: 0; min-height: 50px; z-index: 9999;">
+	<h:graphicImage style="margin-top: 10px; margin-left: 5px;"
+		library="sysmarket" name="images/logo.png" /> </header>
+	<center style="margin-top: 90px">
+		<h:form id="formLogin" prependId="false" onsubmit="action='j_security_check';">
+			<p:messages id="messages" />
+			<p:fieldset
+				style="width: 300px; height: 400px; border-radius: 10px; border: 1px solid #D3D3D3;">
+				<h1>Login</h1>
+				<p:graphicImage
+					style="margin-top: 5px; background: #ffffff; width: 150px; height: 150px; border-radius: 50%; border: 1px solid #000000;;"
+					library="sysmarket" name="images/user-logo.png">
+				</p:graphicImage>
+				<h:panelGrid columns="2" styleClass="panelgrid-noborder" style="display: block;">
+					<p:outputLabel for="j_username" value="E-mail:" />
+					<p:inputText id="j_username" type="email"
+						placeholder="example@example.com" />
+					<p:outputLabel for="j_password" value="Senha:" />
+					<p:password id="j_password" placeholder="**********" />
+				</h:panelGrid>
+				<p:commandButton
+					style="background: #000000; border: 1px solid #000000; margin-top: 10px;"
+					value="Login" icon="fa fa-fw fa-sign-in" ajax="false">
+				</p:commandButton>
+				<p:commandButton
+					style="background: #000000; border: 1px solid #000000; margin-top: 10px;"
+					id="cancel" icon="fa fa-fw fa-close" value="Cancelar">
+					<p:ajax update="formLogin" resetValues="true" />
+				</p:commandButton>
+			</p:fieldset>
+		</h:form>
+	</center>
+</h:body>
+</html>

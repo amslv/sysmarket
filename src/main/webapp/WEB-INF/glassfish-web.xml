@@ -5,8 +5,8 @@
 	<context-root>/sysmarket</context-root>
 
 	<security-role-mapping>
-        <role-name>ADMINISTRADOR</role-name>
-        <group-name>ADMINISTRADOR</group-name>
+        <role-name>ADMIN</role-name>
+        <group-name>ADMIN</group-name>
 	</security-role-mapping>
 	
 	<security-role-mapping>
