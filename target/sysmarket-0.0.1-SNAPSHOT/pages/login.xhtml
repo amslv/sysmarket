@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -15,26 +14,25 @@
 </h:head>
 
 <h:body style="background: #D3D3D3;">
-	<header class="aw-topbar"
+	<nav class="aw-topbar"
 		style="background: #000000; position: fixed; top: 0; right: 0; left: 0; min-height: 50px; z-index: 9999;">
 	<h:graphicImage style="margin-top: 10px; margin-left: 5px;"
-		library="sysmarket" name="images/logo.png" /> </header>
+		library="sysmarket" name="images/logo.png" /> </nav>
 	<center style="margin-top: 90px">
 		<h:form id="formLogin" prependId="false" onsubmit="action='j_security_check';">
 			<p:messages id="messages" />
-			<p:fieldset
+			<p:fieldset	
 				style="width: 300px; height: 400px; border-radius: 10px; border: 1px solid #D3D3D3;">
 				<h1>Login</h1>
-				<p:graphicImage
+				<h:graphicImage
 					style="margin-top: 5px; background: #ffffff; width: 150px; height: 150px; border-radius: 50%; border: 1px solid #000000;;"
 					library="sysmarket" name="images/user-logo.png">
-				</p:graphicImage>
+				</h:graphicImage>
 				<h:panelGrid columns="2" styleClass="panelgrid-noborder" style="display: block;">
-					<p:outputLabel for="j_username" value="E-mail:" />
-					<p:inputText id="j_username" type="email"
-						placeholder="example@example.com" />
+					<p:outputLabel for="j_username" value="Nome de Usuário:" />
+					<p:inputText id="j_username" name="j_username" placeholder="johndoe1" />
 					<p:outputLabel for="j_password" value="Senha:" />
-					<p:password id="j_password" placeholder="**********" />
+					<p:password id="j_password" name="j_password" placeholder="**********" />
 				</h:panelGrid>
 				<p:commandButton
 					style="background: #000000; border: 1px solid #000000; margin-top: 10px;"

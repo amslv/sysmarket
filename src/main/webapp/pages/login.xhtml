@@ -21,7 +21,7 @@
 	<center style="margin-top: 90px">
 		<h:form id="formLogin" prependId="false" onsubmit="action='j_security_check';">
 			<p:messages id="messages" />
-			<p:fieldset
+			<p:fieldset	
 				style="width: 300px; height: 400px; border-radius: 10px; border: 1px solid #D3D3D3;">
 				<h1>Login</h1>
 				<h:graphicImage
@@ -29,11 +29,10 @@
 					library="sysmarket" name="images/user-logo.png">
 				</h:graphicImage>
 				<h:panelGrid columns="2" styleClass="panelgrid-noborder" style="display: block;">
-					<p:outputLabel for="j_username" value="E-mail:" />
-					<p:inputText id="j_username" type="email"
-						placeholder="example@example.com" />
+					<p:outputLabel for="j_username" value="Nome de Usuário:" />
+					<p:inputText id="j_username" name="j_username" placeholder="johndoe1" />
 					<p:outputLabel for="j_password" value="Senha:" />
-					<p:password id="j_password" placeholder="**********" />
+					<p:password id="j_password" name="j_password" placeholder="**********" />
 				</h:panelGrid>
 				<p:commandButton
 					style="background: #000000; border: 1px solid #000000; margin-top: 10px;"

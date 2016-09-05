@@ -7,7 +7,6 @@ C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarke
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\clientes\CadastroClienteBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\FornecedorDAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\entities\Pedido.java
-C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\pedido\EditPedidoBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\entities\TipoPagamento.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\AbstractManageBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\ProdutoDAO.java
@@ -55,6 +54,7 @@ C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarke
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\service\PedidoService.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\PagamentoConverter.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\service\FornecedorService.java
+C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\PopularBD.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\AbstractDAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\util\PasswordCript.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\categoria\CategoriaInsert.java

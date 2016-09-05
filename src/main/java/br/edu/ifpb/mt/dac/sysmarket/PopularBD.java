@@ -34,7 +34,7 @@ public class PopularBD {
 			usuarios.add(getUsuarioAdmin());
 
 			for (Usuario user : usuarios) {
-				PasswordCript.criptografarSenha(user);
+				user.setSenha(PasswordCript.criptografarSenha(user));
 				em.persist(user);
 			}
 
@@ -62,6 +62,9 @@ public class PopularBD {
 
 	private static Usuario getUsuarioAdmin() {
 		Usuario user = new Usuario();
+		user.setNome("Fulano");
+		user.setSobrenome("de Tal");
+		user.setUsername("admin1");
 		user.setEmail("admin@admin.com");
 		user.setSenha("1234567");
 		user.setTipo(TipoUsuario.ADMIN);
@@ -70,6 +73,9 @@ public class PopularBD {
 
 	private static Usuario getUsuarioVisitante() {
 		Usuario user = new Usuario();
+		user.setNome("Sicrano");
+		user.setSobrenome("de Tal");
+		user.setUsername("estoquista1");
 		user.setEmail("estoquista@estoquista.com");
 		user.setSenha("123456");
 		user.setTipo(TipoUsuario.ESTOQUISTA);
