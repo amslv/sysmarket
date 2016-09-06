@@ -15,12 +15,14 @@ C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarke
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\util\Messages.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\EnderecoConverter.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\validator\EmailValidator.java
+C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\EnderecoPaginas.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\util\TransacionalCdi.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\EnderecoDAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\ItemProdutoDAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\PedidoDAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\entities\TipoUsuario.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\service\ProdutoService.java
+C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\IndexUsuarioBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\dao\DAO.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\entities\Endereco.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\FornecedorConverter.java
@@ -30,6 +32,7 @@ C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarke
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\pedido\IndexPedidoBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\PedidoConverter.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\service\ClienteService.java
+C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\beans\LogoutBean.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\ClienteConverter.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\entities\Estado.java
 C:\Users\Ana Silva\workspace\sysmarket\src\main\java\br\edu\ifpb\mt\dac\sysmarket\converters\EstadoConverter.java

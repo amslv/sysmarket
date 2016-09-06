@@ -35,7 +35,7 @@
 		<nav class="aw-menu">
 			<ul>
 				<li><h:link>
-						
+
 						<i class="fa  fa-fw  fa-home"></i>Dashboard</h:link></li>
 				<li><h:link
 						outcome="/pages/admin/estoque/categorias/insert_categoria.xhtml">
@@ -46,7 +46,8 @@
 				<li><h:link
 						outcome="/pages/admin/fornecedores/index_fornecedores.xhtml">
 						<i class="fa  fa-fw  fa-users"></i>Fornecedores</h:link></li>
-				<li><h:link outcome="/pages/admin/estoque/produtos/index_produtos.xhtml">
+				<li><h:link
+						outcome="/pages/admin/estoque/produtos/index_produtos.xhtml">
 						<i class="fa  fa-fw  fa-shopping-basket"></i>Produtos</h:link></li>
 				<li><h:link outcome="/pages/admin/pedidos/index_pedidos.xhtml">
 						<i class="fa  fa-fw  fa-shopping-cart"></i>Pedidos</h:link></li>
@@ -70,9 +71,10 @@
 				<br></br>
 				<br></br>
 				<br></br>
-				<li><h:link>
-					<i class="fa  fa-fw  fa-sign-out"></i>Logout</h:link>
-				</li>
+				<li><h:form>
+						<p:commandLink action="#{logoutBean.efetuarLogout}">
+							<i class="fa  fa-fw  fa-sign-out"></i>Logout</p:commandLink>
+					</h:form></li>
 			</ul>
 		</nav>
 	</aside>

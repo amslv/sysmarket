@@ -45,6 +45,14 @@
 							<p:inputMask mask="(99) 99999-9999" id="celular"
 								value="#{editFornecedorBean.fornecedor.telefone}"
 								required="true"></p:inputMask>
+							<p:outputLabel for="produtos" value="Produtos Fornecidos:"></p:outputLabel>
+							<p:selectManyMenu id="produtos" required="true"
+								value="#{editFornecedorBean.fornecedor.produtos}"
+								showCheckbox="true" converter="#{produtoConverter}">
+								<f:selectItems value="#{editFornecedorBean.produtos}"
+									var="produto" itemValue="#{produto}"
+									itemLabel="#{produto.nome}"></f:selectItems>
+							</p:selectManyMenu>
 						</p:panelGrid>
 					</p:tab>
 					<p:tab title="Endereço">

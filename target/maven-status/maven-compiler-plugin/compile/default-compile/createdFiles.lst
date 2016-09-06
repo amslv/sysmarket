@@ -9,6 +9,7 @@ br\edu\ifpb\mt\dac\sysmarket\converters\EnderecoConverter.class
 br\edu\ifpb\mt\dac\sysmarket\entities\ItemProduto.class
 br\edu\ifpb\mt\dac\sysmarket\dao\ClienteDAO.class
 br\edu\ifpb\mt\dac\sysmarket\dao\EnderecoDAO.class
+br\edu\ifpb\mt\dac\sysmarket\beans\IndexUsuarioBean.class
 br\edu\ifpb\mt\dac\sysmarket\util\TransacionalCdi.class
 br\edu\ifpb\mt\dac\sysmarket\util\Messages.class
 br\edu\ifpb\mt\dac\sysmarket\beans\fornecedores\EditFornecedorBean.class
@@ -36,6 +37,8 @@ br\edu\ifpb\mt\dac\sysmarket\validator\EmailValidator.class
 br\edu\ifpb\mt\dac\sysmarket\beans\produtos\IndexProdutoBean.class
 br\edu\ifpb\mt\dac\sysmarket\beans\pedido\IndexPedidoBean.class
 br\edu\ifpb\mt\dac\sysmarket\converters\EstadoConverter.class
+br\edu\ifpb\mt\dac\sysmarket\beans\EnderecoPaginas.class
+br\edu\ifpb\mt\dac\sysmarket\beans\LogoutBean.class
 br\edu\ifpb\mt\dac\sysmarket\beans\categoria\CategoriaInsert.class
 br\edu\ifpb\mt\dac\sysmarket\entities\Categoria.class
 br\edu\ifpb\mt\dac\sysmarket\PopularBD.class
