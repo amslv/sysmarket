@@ -6,33 +6,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<f:facet name="first">
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-	</f:facet>
 	<title>Sysmarket :: Login</title>
+	<link rel="stylesheet" type="text/css" href="../resources/sysmarket/bootstrap/css/bootstrap.min.css"/>
 </h:head>
 
 <h:body style="background: #D3D3D3;">
 	<nav class="aw-topbar"
 		style="background: #000000; position: fixed; top: 0; right: 0; left: 0; min-height: 50px; z-index: 9999;">
-	<h:graphicImage style="margin-top: 10px; margin-left: 5px;"
-		library="sysmarket" name="images/logo.png" /> </nav>
+		<h:graphicImage style="margin-top: 10px; margin-left: 5px;"
+			library="sysmarket" name="images/logo.png" />
+	</nav>
 	<center style="margin-top: 90px">
-		<h:form id="formLogin" prependId="false" onsubmit="action='j_security_check';">
+		<h:form id="formLogin" prependId="false"
+			onsubmit="action='j_security_check';">
 			<p:messages id="messages" />
-			<p:fieldset	
+			<p:fieldset
 				style="width: 300px; height: 400px; border-radius: 10px; border: 1px solid #D3D3D3;">
 				<h1>Login</h1>
 				<h:graphicImage
 					style="margin-top: 5px; background: #ffffff; width: 150px; height: 150px; border-radius: 50%; border: 1px solid #000000;;"
 					library="sysmarket" name="images/user-logo.png">
 				</h:graphicImage>
-				<h:panelGrid columns="2" styleClass="panelgrid-noborder" style="display: block;">
-					<p:outputLabel for="j_username" value="Nome de Usuário:" />
-					<p:inputText id="j_username" name="j_username" placeholder="johndoe1" />
+				<h:panelGrid columns="2" styleClass="panelgrid-noborder"
+					style="display: block; margin-top:10px;">
+					<p:outputLabel for="j_username" value="Login:" />
+					<p:inputText id="j_username" name="j_username"
+						style="margin-left: 30px;" placeholder="johndoe" />
 					<p:outputLabel for="j_password" value="Senha:" />
-					<p:password id="j_password" name="j_password" placeholder="**********" />
+					<p:password id="j_password" name="j_password"
+						style="margin-left: 30px;" placeholder="**********" />
 				</h:panelGrid>
 				<p:commandButton
 					style="background: #000000; border: 1px solid #000000; margin-top: 10px;"

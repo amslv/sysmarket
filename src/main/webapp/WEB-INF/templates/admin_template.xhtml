@@ -6,11 +6,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<f:facet name="first">
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-	</f:facet>
 
+	<link rel="stylesheet" type="text/css" href="../resources/sysmarket/bootstrap/css/bootstrap.min.css"/>
 	<title><ui:insert name="title"></ui:insert></title>
 
 	<h:outputStylesheet library="sysmarket" name="styles/custom.css" />
@@ -51,8 +48,9 @@
 						<i class="fa  fa-fw  fa-shopping-basket"></i>Produtos</h:link></li>
 				<li><h:link outcome="/pages/admin/pedidos/index_pedidos.xhtml">
 						<i class="fa  fa-fw  fa-shopping-cart"></i>Pedidos</h:link></li>
-				<br></br>
-				<br></br>
+				<li><h:link
+						outcome="/pages/admin/usuarios/index_usuarios.xhtml">
+						<i class="fa  fa-fw  fa-users"></i>Usuários</h:link></li>
 				<br></br>
 				<br></br>
 				<br></br>
@@ -81,7 +79,8 @@
 	<section class="aw-content  js-content">
 		<ui:insert name="content" />
 	</section>
-
+	<script type="text/javascript"
+		src="#{request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 </h:body>
 
 </html>

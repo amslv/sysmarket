@@ -13,12 +13,11 @@
 	<ui:define name="content">
 		<br></br>
 		<h2>Gerenciamento de Categorias</h2>
-		<p:fieldset legend="Cadastro de Categorias"
-			style="margin-top:20px; width:620px">
+		<p:fieldset legend="Cadastro de Categorias" style="margin-top:20px">
 			<h:form>
 				<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
 					closable="true"></p:messages>
-				<p:panelGrid columns="2" style="width:600px;" layout="grid"
+				<p:panelGrid columns="2" layout="grid"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
 					styleClass="panelgrid-noborder">
 					<p:outputLabel for="nome" indicateRequired="true">Nome:</p:outputLabel>
@@ -32,13 +31,16 @@
 						update=":tabelaCategorias"></p:commandButton>
 				</p:panelGrid>
 			</h:form>
-			<p:panelGrid columns="1" style="width:600px;">
+			<p:panelGrid columns="1">
 				<p:dataTable id="tabelaCategorias"
 					style="padding-bottom:30px; padding-top:10px;" var="cat"
 					value="#{categoriaInsert.categorias}" reflow="true">
 					<f:facet name="header">
             			Categorias Cadastradas
         			</f:facet>
+					<p:column headerText="ID">
+						<h:outputText value="#{cat.id}" />
+					</p:column>
 					<p:column headerText="Nome" styleClass="centralizarTexto">
 						<h:outputText value="#{cat.nome}" />
 					</p:column>
