@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.EnderecoDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Endereco;
+import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class EnderecoService implements IService<Endereco> {
 
@@ -17,14 +18,17 @@ public class EnderecoService implements IService<Endereco> {
 	@Inject
 	private EnderecoDAO dao;
 
+	@TransacionalCdi
 	public void save(Endereco t) {
 		dao.save(t);
 	}
 
+	@TransacionalCdi
 	public Endereco update(Endereco t) {
 		return dao.update(t);
 	}
 
+	@TransacionalCdi
 	public void remove(Endereco t) {
 		dao.delete(t);
 	}

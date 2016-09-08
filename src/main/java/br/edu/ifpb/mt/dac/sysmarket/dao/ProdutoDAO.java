@@ -9,6 +9,11 @@ import br.edu.ifpb.mt.dac.sysmarket.entities.Produto;
 
 public class ProdutoDAO extends AbstractDAO<Produto> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4882789693350797630L;
+
 	private List<Produto> find(String where) {
 		EntityManager manager = getEntityManager();
 		List<Produto> list = new ArrayList<Produto>();

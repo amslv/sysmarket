@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.EstadoDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
+import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class EstadoService implements IService<Estado> {
 
@@ -17,14 +18,17 @@ public class EstadoService implements IService<Estado> {
 	@Inject
 	private EstadoDAO dao;
 
+	@TransacionalCdi
 	public void save(Estado t) {
 		dao.save(t);
 	}
 
+	@TransacionalCdi
 	public Estado update(Estado t) {
 		return dao.update(t);
 	}
 
+	@TransacionalCdi
 	public void remove(Estado t) {
 		dao.delete(t);
 	}

@@ -9,6 +9,11 @@ import br.edu.ifpb.mt.dac.sysmarket.entities.Cliente;
 
 public class ClienteDAO extends AbstractDAO<Cliente> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6634711896781673975L;
+
 	public List<Cliente> getByName(String name) {
 		EntityManager em = getEntityManager();
 		List<Cliente> list = new ArrayList<Cliente>();

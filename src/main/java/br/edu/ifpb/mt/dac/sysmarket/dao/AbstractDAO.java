@@ -8,8 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
-public abstract class AbstractDAO<T extends Serializable> extends DAO {
+public abstract class AbstractDAO<T extends Serializable> extends DAO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8776857368657262989L;
 	private final Class<T> persistentClass;
 	
 	@SuppressWarnings("unchecked")

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.ItemProdutoDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.ItemProduto;
+import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class ItemProdutoService implements IService<ItemProduto> {
 
@@ -17,14 +18,17 @@ public class ItemProdutoService implements IService<ItemProduto> {
 	@Inject
 	private ItemProdutoDAO dao;
 
+	@TransacionalCdi
 	public void save(ItemProduto t) {
 		dao.save(t);
 	}
 
+	@TransacionalCdi
 	public ItemProduto update(ItemProduto t) {
 		return dao.update(t);
 	}
 
+	@TransacionalCdi
 	public void remove(ItemProduto t) {
 		dao.delete(t);
 	}

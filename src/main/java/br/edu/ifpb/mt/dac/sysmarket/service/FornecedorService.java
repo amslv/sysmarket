@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.FornecedorDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Fornecedor;
+import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class FornecedorService implements IService<Fornecedor> {
 	
@@ -16,14 +17,17 @@ public class FornecedorService implements IService<Fornecedor> {
 	@Inject
 	private FornecedorDAO dao;
 
+	@TransacionalCdi
 	public void save(Fornecedor t) {
 		dao.save(t);
 	}
 
+	@TransacionalCdi
 	public Fornecedor update(Fornecedor t) {
 		return dao.update(t);
 	}
 
+	@TransacionalCdi
 	public void remove(Fornecedor t) {
 		dao.delete(t);
 	}

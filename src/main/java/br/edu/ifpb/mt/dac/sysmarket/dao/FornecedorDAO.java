@@ -9,6 +9,11 @@ import br.edu.ifpb.mt.dac.sysmarket.entities.Fornecedor;
 
 public class FornecedorDAO extends AbstractDAO<Fornecedor> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1829367985985868093L;
+
 	public List<Fornecedor> getByNomeFantasia(String nomeFantasia) {
 		EntityManager em = getEntityManager();
 		List<Fornecedor> list = new ArrayList<Fornecedor>();

@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.EstadoDAO;
-import br.edu.ifpb.mt.dac.sysmarket.entities.Categoria;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
 
 @Named

@@ -14,6 +14,7 @@ public class ProdutoService implements IService<Produto> {
 	 * 
 	 */
 	private static final long serialVersionUID = 8831405871246868149L;
+	
 	@Inject
 	private ProdutoDAO dao;
 	
