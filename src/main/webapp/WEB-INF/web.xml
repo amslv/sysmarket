@@ -36,6 +36,10 @@
 		<error-code>404</error-code>
 		<location>/pages/404.xhtml</location>
 	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/pages/500.xhtml</location>
+	</error-page>
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<realm-name>sysmarketJdbcRealm</realm-name>

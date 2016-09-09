@@ -24,7 +24,7 @@ public class CadastroClienteBean extends AbstractManageBean {
 	private List<Cliente> clientes;
 	@Inject
 	private Cliente cliente;
-	
+
 	@PostConstruct
 	public void start() {
 		try {			
@@ -33,7 +33,7 @@ public class CadastroClienteBean extends AbstractManageBean {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String saveCliente() {
 		try {
 			service.save(cliente);
@@ -42,15 +42,15 @@ public class CadastroClienteBean extends AbstractManageBean {
 		} catch (Exception e) {			
 			e.printStackTrace();
 			if(e.toString().contains("ConstraintViolationException")){
-				showFlashMessageError("Essa cliente já existe!");
+				showFlashMessageError("Esse cliente já existe!");
 			}else{
-			showFlashMessageError("Erro ao tentar salvar o cliente!");
+				showFlashMessageError("Erro ao tentar salvar o cliente!");
 			}
 			return "cadastro_cliente";
 		}	
 		return "/cadastro_cliente?faces-redirect=true";
 	}
-	
+
 	public void excluir(Cliente cliente){
 		try {
 			service.remove(cliente);

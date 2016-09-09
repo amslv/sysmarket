@@ -29,11 +29,11 @@
 						style="background: #000000; border: 1px solid #000000;"
 						value="Cadastrar" icon="fa fa-fw fa-plus" id="submit"
 						action="#{cadastroClienteBean.saveCliente}"
-						update=":tabelaCategorias"></p:commandButton>
+						update=":tabelaProdutos"></p:commandButton>
 				</p:panelGrid>
 			</h:form>
 			<p:panelGrid columns="1" style="width:600px;">
-				<p:dataTable id="tabelaCategorias"
+				<p:dataTable id="tabelaProdutos"
 					style="padding-bottom:30px; padding-top:10px;" var="cliente"
 					value="#{cadastroClienteBean.clientes}" reflow="true">
 					<f:facet name="header">

@@ -22,76 +22,148 @@
 		<br />
 		<h2>Cadastro/Edição de Fornecedores</h2>
 		<h:form id="formEdicaoFornecedores">
-			<p:messages id="messages" showDetail="true" showIcon="true" closable="true"></p:messages>
-			<p:fieldset>
-				<div class="ui-fluid">
-					<h2>Dados Pessoais</h2>
-					<p:panelGrid columns="4">
-						<p:outputLabel for="nome_fantasia" value="Nome Fantasia:"></p:outputLabel>
-						<p:inputText id="nome_fantasia" required="true"
-							value="#{editFornecedorBean.fornecedor.nomeFantasia}"></p:inputText>
-						<p:outputLabel for="razao_social" value="Razão Social:"></p:outputLabel>
-						<p:inputText id="razao_social" required="true"
-							value="#{editFornecedorBean.fornecedor.razaoSocial}"></p:inputText>
-						<p:outputLabel for="cnpj" value="CNPJ:"></p:outputLabel>
-						<p:inputMask id="cnpj" mask="99.999.9999/9999-99" required="true"
-							value="#{editFornecedorBean.fornecedor.cnpj}"></p:inputMask>
-						<p:outputLabel for="email" value="E-mail:"></p:outputLabel>
-						<p:inputText id="email" type="email" required="true"
-							value="#{editFornecedorBean.fornecedor.email}"></p:inputText>
-						<p:outputLabel for="telefone" value="Telefone:"></p:outputLabel>
-						<p:inputMask id="telefone" mask="(99) 9999-9999" required="true"
-							value="#{editFornecedorBean.fornecedor.telefone}"></p:inputMask>
-					</p:panelGrid>
-					<h2>Endereço</h2>
-					<p:panelGrid columns="4">
-						<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
-						<p:inputMask id="cep" mask="99999-999" required="true"
-							value="#{editFornecedorBean.fornecedor.endereco.cep}"></p:inputMask>
-						<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
-						<p:inputText id="rua" required="true"
-							value="#{editFornecedorBean.fornecedor.endereco.rua}"></p:inputText>
-						<p:outputLabel for="numero" value="Número:"></p:outputLabel>
-						<p:inputText id="numero" required="true"
-							value="#{editFornecedorBean.fornecedor.endereco.numero}"></p:inputText>
-						<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
-						<p:inputText id="bairro" required="true"
-							value="#{editFornecedorBean.fornecedor.endereco.bairro}"></p:inputText>
-						<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
-						<p:inputText id="cidade" required="true"
-							value="#{editFornecedorBean.fornecedor.endereco.cidade}"></p:inputText>
-						<p:outputLabel for="estado" value="Estado:"></p:outputLabel>
-						<p:selectOneMenu id="estado"
-							value="#{editFornecedorBean.fornecedor.endereco.estado}"
-							converter="#{estadoConverter}" filter="true"
-							filterMatchMode="startsWith">
-							<f:selectItems value="#{editFornecedorBean.estados}" var="estado"
-								itemLabel="#{estado.nome}" itemValue="#{estado}">
-							</f:selectItems>
-						</p:selectOneMenu>
-					</p:panelGrid>
-					<h2>Produtos Fornecidos</h2>
-					<p:panelGrid columns="1">
-						<p:outputLabel for="produtos" value="Produtos:"></p:outputLabel>
-						<p:selectManyMenu id="produtos"
-							value="#{editFornecedorBean.fornecedor.produtos}" filter="true"
-							filterMatchMode="startsWith" required="true"
-							converter="#{produtoConverter}" showCheckbox="true">
-							<f:selectItems value="#{editFornecedorBean.produtos}"
-								var="produtos" itemValue="#{produtos}"
-								itemLabel="#{produtos.nome}"></f:selectItems>
-						</p:selectManyMenu>
-					</p:panelGrid>
-				</div>
-			</p:fieldset>
-			<p:separator style="border-color: #000000" />
-			<h:panelGrid columns="3">
-				<p:commandButton value="Salvar" id="btSave" icon="fa fa-floppy-o"
-					style="float: left; background: #000000; border: 1px solid #000000;" styleClass="btnn btnn-primary"
-					process="formEdicaoFornecedores"
-					action="#{editFornecedorBean.saveFornecedor}" />
-				<p:button value="Cancelar" id="cancel" icon="fa fa-ban"
-					style="float: left; background: #000000; border: 1px solid #000000;" styleClass="btnn btnn-primary" />
+			<p:messages id="messages" showDetail="true" showIcon="true"
+				closable="true"></p:messages>
+			<div class="ui-fluid">
+				<p:tabView>
+					<p:tab title="Dados Pessoais">
+						<h:panelGrid columns="2">
+							<p:outputLabel for="nome_fantasia" value="Nome fantasia:">
+							</p:outputLabel>
+							<p:inputText id="nome_fantasia" required="true"
+								value="#{editFornecedorBean.fornecedor.nomeFantasia}"></p:inputText>
+							<p:outputLabel for="razao_social" value="Razão social:">
+							</p:outputLabel>
+							<p:inputText id="razao_social" required="true"
+								value="#{editFornecedorBean.fornecedor.razaoSocial}"></p:inputText>
+							<p:outputLabel for="cnpj" value="CNPJ:">
+							</p:outputLabel>
+							<p:inputMask id="cnpj" mask="99.999.999/9999-99" required="true"
+								value="#{editFornecedorBean.fornecedor.cnpj}"></p:inputMask>
+							<p:outputLabel for="email" value="Email:"></p:outputLabel>
+							<p:inputText id="email" type="email" required="true"
+								value="#{editFornecedorBean.fornecedor.email}"></p:inputText>
+							<p:outputLabel for="telefone" value="Telefone:"></p:outputLabel>
+							<p:inputMask mask="(99) 9999-9999" id="telefone" required="true"
+								value="#{editFornecedorBean.fornecedor.telefone}"></p:inputMask>
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Endereço">
+						<h:panelGrid columns="2">
+							<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
+							<p:inputMask id="cep" mask="99999-999" required="true"
+								value="#{editFornecedorBean.fornecedor.endereco.cep}"></p:inputMask>
+							<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
+							<p:inputText id="rua" required="true"
+								value="#{editFornecedorBean.fornecedor.endereco.rua}"></p:inputText>
+							<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
+							<p:inputText id="bairro" required="true"
+								value="#{editFornecedorBean.fornecedor.endereco.bairro}"></p:inputText>
+							<p:outputLabel for="estado" value="Estado:"></p:outputLabel>
+							<p:selectOneMenu id="estado" required="true"
+								value="#{editFornecedorBean.fornecedor.endereco.estado}"
+								converter="#{estadoConverter}" filter="true"
+								filterMatchMode="startsWith">
+								<f:selectItems value="#{editFornecedorBean.estados}"
+									var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+							</p:selectOneMenu>
+							<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
+							<p:selectOneMenu id="cidade"
+								value="#{editFornecedorBean.fornecedor.endereco.cidade}"
+								converter="#{cidadeConverter}" filter="true"
+								filterMatchMode="startsWith">
+								<f:selectItems value="#{editFornecedorBean.cidades}"
+									var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade}"></f:selectItems>
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Produtos">
+						<h2>Todos os Produtos Disponíveis</h2>
+						<p:dataTable id="produtosDisponiveis" value="#{editFornecedorBean.produtos}"
+							var="prod" selection="#{editFornecedorBean.fornecedor.produtos}"
+							reflow="true" rowKey="#{prod.id}">
+							<f:facet name="header">
+									Produtos
+								</f:facet>
+							<p:column headerText="Id" style="text-align: center">
+								<h:outputText value="#{prod.id}" />
+							</p:column>
+							<p:column headerText="Nome" style="text-align: center">
+								<h:outputText value="#{prod.nome}" />
+							</p:column>
+							<p:column headerText="Descrição" style="text-align: center">
+								<h:outputText value="#{prod.descricao}" />
+							</p:column>
+							<p:column headerText="Quantidade Disponível"
+								style="text-align: center">
+								<h:outputText value="#{prod.quantidade}" />
+							</p:column>
+							<p:column headerText="Preço de custo" style="text-align: center">
+								<h:outputText value="#{prod.valorCompra}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Preço de venda" style="text-align: center">
+								<h:outputText value="#{prod.valorVenda}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Categoria" style="text-align: center">
+								<h:outputText value="#{prod.categoria.nome}">
+								</h:outputText>
+							</p:column>
+							<f:facet name="footer">
+								<p:commandButton process="produtosDisponiveis"
+									update=":formEdicaoFornecedores:produtosFornecidos" icon="ui-icon-search"
+									value="Selecionar"/>
+							</f:facet>
+						</p:dataTable>
+						<h2>Produtos Fornecidos</h2>
+						<p:dataTable id="produtosFornecidos"
+							value="#{editFornecedorBean.fornecedor.produtos}" var="prod"
+							reflow="true">
+							<f:facet name="header">
+									Produtos
+								</f:facet>
+							<p:column headerText="Id" style="text-align: center">
+								<h:outputText value="#{prod.id}" />
+							</p:column>
+							<p:column headerText="Nome" style="text-align: center">
+								<h:outputText value="#{prod.nome}" />
+							</p:column>
+							<p:column headerText="Descrição" style="text-align: center">
+								<h:outputText value="#{prod.descricao}" />
+							</p:column>
+							<p:column headerText="Quantidade Disponível"
+								style="text-align: center">
+								<h:outputText value="#{prod.quantidade}" />
+							</p:column>
+							<p:column headerText="Preço de custo" style="text-align: center">
+								<h:outputText value="#{prod.valorCompra}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Preço de venda" style="text-align: center">
+								<h:outputText value="#{prod.valorVenda}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Categoria" style="text-align: center">
+								<h:outputText value="#{prod.categoria.nome}">
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+					</p:tab>
+				</p:tabView>
+			</div>
+			<p:separator style="border: 1px solid #000000"></p:separator>
+			<h:panelGrid columns="2">
+				<p:commandButton id="salvar" value="Gravar" icon="fa fa-fw fa-check"
+					style="background: #000000; border: 1px solid #000000;"
+					action="#{editFornecedorBean.saveFornecedor()}"></p:commandButton>
+				<p:button id="cancelar" icon="fa fa-fw fa-close"
+					style="background: #000000; border: 1px solid #000000;"
+					value="Cancelar" outcome="index_fornecedores"></p:button>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

@@ -8,12 +8,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.entities.Cidade;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Endereco;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Fornecedor;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Produto;
+import br.edu.ifpb.mt.dac.sysmarket.service.CidadeService;
 import br.edu.ifpb.mt.dac.sysmarket.service.EstadoService;
 import br.edu.ifpb.mt.dac.sysmarket.service.FornecedorService;
 import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
@@ -31,11 +32,16 @@ public class EditFornecedorBean extends AbstractManageBean {
 	
 	private List<Estado> estados;
 	
+	private List<Cidade> cidades;
+	
 	@Inject
 	private FornecedorService service;
 	
 	@Inject
 	private EstadoService dao;
+	
+	@Inject
+	private CidadeService cidadeService;
 	
 	private List<Produto> produtos = new ArrayList<Produto>();
 	
@@ -46,6 +52,7 @@ public class EditFornecedorBean extends AbstractManageBean {
 	public void init() {
 		produtos = pService.getAll();
 		estados = dao.getAll();
+		cidades = cidadeService.getAll();
 	}
 	
 	public void preRenderView() {
@@ -56,7 +63,7 @@ public class EditFornecedorBean extends AbstractManageBean {
 		}
 	}
 	
-	public void saveFornecedor() {
+	public String saveFornecedor() {
 		try {
 			if (isEdicaoFornecedor()) {
 				service.update(fornecedor);
@@ -68,6 +75,7 @@ public class EditFornecedorBean extends AbstractManageBean {
 		} catch (Exception e) {
 			showFlashMessageError("Falha ao salvar fornecedor!");
 		}
+		return "/index_fornecedores?faces-redirect=true";
 	}
 	
 	public Boolean isEdicaoFornecedor() {
@@ -97,5 +105,12 @@ public class EditFornecedorBean extends AbstractManageBean {
 	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
 	}
-	
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
 }

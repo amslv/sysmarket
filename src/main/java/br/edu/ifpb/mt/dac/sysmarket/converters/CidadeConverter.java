@@ -9,15 +9,15 @@ import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.dao.EstadoDAO;
-import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
+import br.edu.ifpb.mt.dac.sysmarket.entities.Cidade;
+import br.edu.ifpb.mt.dac.sysmarket.service.CidadeService;
 
 @Named
 @RequestScoped
-public class EstadoConverter implements Converter {
+public class CidadeConverter implements Converter {
 
 	@Inject
-	private EstadoDAO service;
+	private CidadeService service;
 
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		if (value == null || value.trim().isEmpty()) {
@@ -26,7 +26,7 @@ public class EstadoConverter implements Converter {
 		long id = Long.parseLong(value);
 
 		try {
-			return service.getByID(id);
+			return service.getById(id);
 		} catch (Exception e) {
 			String msgErroStr = String.format(
 					"Erro de conversão! Não foi possível realizar a conversão da string '%s' para o tipo esperado.",
@@ -40,7 +40,7 @@ public class EstadoConverter implements Converter {
 		if (value == null) {
 			return null;
 		}
-		Long id = ((Estado) value).getId();
+		Long id = ((Cidade) value).getId();
 
 		return (id != null) ? id.toString() : null;
 	}
