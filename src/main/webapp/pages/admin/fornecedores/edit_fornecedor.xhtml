@@ -21,9 +21,9 @@
 	<ui:define name="content">
 		<br />
 		<h2>Cadastro/Edição de Fornecedores</h2>
+		<p:messages id="messages" showDetail="true" showIcon="true"
+			closable="true"></p:messages>
 		<h:form id="formEdicaoFornecedores">
-			<p:messages id="messages" showDetail="true" showIcon="true"
-				closable="true"></p:messages>
 			<div class="ui-fluid">
 				<p:tabView>
 					<p:tab title="Dados Pessoais">
@@ -58,6 +58,9 @@
 							<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
 							<p:inputText id="rua" required="true"
 								value="#{editFornecedorBean.fornecedor.endereco.rua}"></p:inputText>
+							<p:outputLabel for="numero" value="Número:"></p:outputLabel>
+							<p:inputText id="numero" required="true"
+								value="#{editFornecedorBean.fornecedor.endereco.numero}"></p:inputText>
 							<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
 							<p:inputText id="bairro" required="true"
 								value="#{editFornecedorBean.fornecedor.endereco.bairro}"></p:inputText>
@@ -81,8 +84,10 @@
 					</p:tab>
 					<p:tab title="Produtos">
 						<h2>Todos os Produtos Disponíveis</h2>
-						<p:dataTable id="produtosDisponiveis" value="#{editFornecedorBean.produtos}"
-							var="prod" selectionMode="multiple" selection="#{editFornecedorBean.fornecedor.produtos}"
+						<p:dataTable id="produtosDisponiveis"
+							value="#{editFornecedorBean.produtos}" var="prod"
+							selectionMode="multiple"
+							selection="#{editFornecedorBean.fornecedor.produtos}"
 							reflow="true" rowKey="#{prod.id}">
 							<f:facet name="header">
 									Produtos
@@ -115,8 +120,8 @@
 								</h:outputText>
 							</p:column>
 							<f:facet name="footer">
-								<p:commandButton process="produtosDisponiveis" icon="ui-icon-search"
-									value="Selecionar"/>
+								<p:commandButton process="produtosDisponiveis"
+									icon="ui-icon-search" value="Selecionar" />
 							</f:facet>
 						</p:dataTable>
 					</p:tab>

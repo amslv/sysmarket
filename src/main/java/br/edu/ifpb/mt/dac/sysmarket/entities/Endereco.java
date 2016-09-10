@@ -43,6 +43,7 @@ public class Endereco implements Serializable {
 	
 	public Endereco() {
 		estado = new Estado();
+		cidade = new Cidade();
 	}
 
 	public Long getId() {

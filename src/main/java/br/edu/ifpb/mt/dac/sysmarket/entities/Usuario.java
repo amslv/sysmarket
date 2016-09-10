@@ -53,7 +53,9 @@ public class Usuario implements Serializable {
 	@Column(nullable=false)
 	private TipoUsuario tipo;
 	
-	public Usuario() {}
+	public Usuario() {
+		endereco = new Endereco();
+	}
 
 	public Long getId() {
 		return id;

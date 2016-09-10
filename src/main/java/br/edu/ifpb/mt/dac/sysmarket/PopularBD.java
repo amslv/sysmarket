@@ -68,6 +68,8 @@ public class PopularBD {
 		user.setEmail("admin@admin.com");
 		user.setSenha("1234567");
 		user.setTipo(TipoUsuario.ADMIN);
+		user.setCpf("123.456.789.-01");
+		user.setTelefone("(83) 1234-5678");
 		return user;
 	}
 
@@ -79,6 +81,8 @@ public class PopularBD {
 		user.setEmail("estoquista@estoquista.com");
 		user.setSenha("123456");
 		user.setTipo(TipoUsuario.ESTOQUISTA);
+		user.setCpf("123.456.789.-02");
+		user.setTelefone("(83) 1234-5678");
 		return user;
 	}
 }

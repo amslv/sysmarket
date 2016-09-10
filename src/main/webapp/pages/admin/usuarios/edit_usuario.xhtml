@@ -8,6 +8,14 @@
 	xmlns:o="http://omnifaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="id" value="#{editUsuarioBean.usuario}"
+			converter="#{usuarioConverter}" />
+		<f:event listener="#{editUsuarioBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
 	<ui:define name="title">
 		Sysmarket :: Gerenciamento de Usuários
 	</ui:define>
@@ -15,36 +23,88 @@
 		<br />
 		<h2>Cadastro/Edição de Usuários</h2>
 		<p:fieldset>
-			<div class="ui-fluid">
-				<h:form id="formEdicaoUsuarios">
+			<h:form id="formEdicaoUsuarios">
+				<div class="ui-fluid">
 					<p:tabView>
 						<p:tab title="Dados Pessoais">
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Nome:" for="nome" />
-								<p:inputText id="nome" required="true" />
-								<h:outputLabel value="Sobrenome:" for="sobrenome" />
-								<p:inputText id="sobrenome" required="true" />
-								<h:outputLabel value="CPF:" for="cpf" />
-								<p:inputMask id="cpf" mask="999.999.999-99" required="true" />
-								<h:outputLabel value="E-mail:" for="email" />
-								<p:inputText id="email" type="email" required="true">
+							<h:panelGrid columns="4">
+								<p:outputLabel value="Nome:" for="nome" />
+								<p:inputText id="nome" required="true"
+									value="#{editUsuarioBean.usuario.nome}" />
+								<p:outputLabel value="Sobrenome:" for="sobrenome" />
+								<p:inputText id="sobrenome" required="true"
+									value="#{editUsuarioBean.usuario.sobrenome}" />
+								<p:outputLabel value="CPF:" for="cpf" />
+								<p:inputMask id="cpf" mask="999.999.999-99" required="true"
+									value="#{editUsuarioBean.usuario.cpf}" />
+								<p:outputLabel value="Telefone:" for="telefone" />
+								<p:inputMask id="telefone" mask="(99) 99999-9999" required="true"
+									value="#{editUsuarioBean.usuario.telefone}" />
+								<p:outputLabel value="E-mail:" for="email" />
+								<p:inputText id="email" type="email" required="true"
+									value="#{editUsuarioBean.usuario.email}">
 									<f:validator validatorId="emailValidator"></f:validator>
 								</p:inputText>
+								<h:outputLabel value="Nome de Usuário:" for="username" />
+								<p:inputText id="username" required="true"
+									value="#{editUsuarioBean.usuario.username}" />
+								<p:outputLabel value="Senha:" for="senha" />
+								<p:password id="senha" maxlength="32" weakLabel="true"
+									goodLabel="true" strongLabel="true"
+									value="#{editUsuarioBean.usuario.senha}"></p:password>
+								<p:outputLabel value="Tipo de Usuário:" for="tipo" />
+								<p:selectOneMenu id="tipo" required="true"
+									value="#{editUsuarioBean.usuario.tipo}">
+									<f:selectItems value="#{editUsuarioBean.tipos}" var="tipo"
+										itemValue="#{tipo}" itemLabel="#{tipo}"></f:selectItems>
+								</p:selectOneMenu>
 							</h:panelGrid>
 						</p:tab>
 						<p:tab title="Endereço">
 							<h:panelGrid columns="2">
 								<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
-								<p:inputMask id="cep" mask="99999-999" required="true"></p:inputMask>
+								<p:inputMask id="cep" mask="99999-999" required="true"
+									value="#{editUsuarioBean.usuario.endereco.cep}"></p:inputMask>
 								<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
-								<p:inputText id="rua" required="true"></p:inputText>
+								<p:inputText id="rua" required="true"
+									value="#{editUsuarioBean.usuario.endereco.rua}"></p:inputText>
+								<p:outputLabel for="numero" value="Número:"></p:outputLabel>
+								<p:inputText id="numero" required="true"
+									value="#{editUsuarioBean.usuario.endereco.numero}"></p:inputText>
 								<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
-								<p:inputText id="bairro" required="true"></p:inputText>
+								<p:inputText id="bairro" required="true"
+									value="#{editUsuarioBean.usuario.endereco.bairro}"></p:inputText>
+								<p:outputLabel for="estado" value="Estado:"></p:outputLabel>
+								<p:selectOneMenu id="estado" required="true"
+									value="#{editUsuarioBean.usuario.endereco.estado}"
+									converter="#{estadoConverter}" filter="true"
+									filterMatchMode="startsWith">
+									<f:selectItems value="#{editUsuarioBean.estados}" var="estado"
+										itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+								</p:selectOneMenu>
+								<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
+								<p:selectOneMenu id="cidade"
+									value="#{editUsuarioBean.usuario.endereco.cidade}"
+									converter="#{cidadeConverter}" filter="true"
+									filterMatchMode="startsWith">
+									<f:selectItems value="#{editUsuarioBean.cidades}" var="cidade"
+										itemLabel="#{cidade.nome}" itemValue="#{cidade}"></f:selectItems>
+								</p:selectOneMenu>
 							</h:panelGrid>
 						</p:tab>
 					</p:tabView>
-				</h:form>
-			</div>
+					<p:separator style="border: 1px solid #000000"></p:separator>
+					<h:panelGrid columns="2">
+						<p:commandButton id="salvar" value="Gravar"
+							icon="fa fa-fw fa-check"
+							style="background: #000000; border: 1px solid #000000;"
+							action="#{editUsuarioBean.saveUsuario}"></p:commandButton>
+						<p:button id="cancelar" icon="fa fa-fw fa-close"
+							style="background: #000000; border: 1px solid #000000;"
+							value="Cancelar" outcome="index_usuarios"></p:button>
+					</h:panelGrid>
+				</div>
+			</h:form>
 		</p:fieldset>
 	</ui:define>
 </ui:composition>

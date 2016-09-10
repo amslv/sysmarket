@@ -75,7 +75,7 @@ public class EditFornecedorBean extends AbstractManageBean {
 		} catch (Exception e) {
 			showFlashMessageError("Falha ao salvar fornecedor!");
 		}
-		return "/index_fornecedores?faces-redirect=true";
+		return "index_fornecedores?faces-redirect=true";
 	}
 	
 	public Boolean isEdicaoFornecedor() {

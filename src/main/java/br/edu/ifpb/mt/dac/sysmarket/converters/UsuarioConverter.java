@@ -1,15 +1,19 @@
 package br.edu.ifpb.mt.dac.sysmarket.converters;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.entities.Produto;
+import br.edu.ifpb.mt.dac.sysmarket.entities.Usuario;
 import br.edu.ifpb.mt.dac.sysmarket.service.UsuarioService;
 
+@Named
+@RequestScoped
 public class UsuarioConverter implements Converter {
 	
 	@Inject
@@ -36,7 +40,7 @@ public class UsuarioConverter implements Converter {
 		if (value == null) {
 			return null;
 		}
-		Long id = ((Produto) value).getId();
+		Long id = ((Usuario) value).getId();
 
 		return (id != null) ? id.toString() : null;
 	}
