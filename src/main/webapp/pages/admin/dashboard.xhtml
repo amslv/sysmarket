@@ -16,16 +16,36 @@
 		<p:panelGrid columns="4" layout="grid" styleClass="ui-panelgrid-blank"
 			columnClasses="ui-grid-col-3">
 			<p:fieldset id="fieldProdutos" styleClass="box box-success">
-				<div class="col-lg-2 col-xs-2">
-					<h3 style="font-family: 42px; font-weight: bold; margin-top: 0px;">
-						<p>Produtos</p>
-					</h3>
-				</div>
-				<div style="display: inline; float: right !important;">
-					<i class="fa fa-shopping-bag"></i>
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/horizontal.png"
+						width="70px" height="50px" />
 				</div>
 				<p:tooltip for="fieldProdutos"
 					value="Número de produtos cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldFornecedores" styleClass="box box-success">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/people.png"
+						width="50px" height="50px" />
+				</div>
+				<p:tooltip for="fieldFornecedores"
+					value="Número de fornecedores cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldClientes" styleClass="box box-success">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/people.png"
+						width="50px" height="50px" />
+				</div>
+				<p:tooltip for="fieldClientes"
+					value="Número de clientes cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldPedidos" styleClass="box box-success">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/shopping-bag.png"
+						width="50px" height="50px" />
+				</div>
+				<p:tooltip for="fieldPedidos"
+					value="Número de pedidos cadastrados no sistema" />
 			</p:fieldset>
 		</p:panelGrid>
 	</ui:define>
