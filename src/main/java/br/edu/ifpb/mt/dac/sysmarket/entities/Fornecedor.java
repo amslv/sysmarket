@@ -3,6 +3,7 @@ package br.edu.ifpb.mt.dac.sysmarket.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Fornecedor implements Serializable {
 	@Column(nullable=false)
 	private String razaoSocial;
 	
-	@OneToOne @JoinColumn
+	@OneToOne(cascade=CascadeType.ALL) @JoinColumn
 	private Endereco endereco;
 	
 	@Column(nullable=false, unique=true)

@@ -4,9 +4,57 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-</h:head>
-<h:body>
-	<p:link href="login.xhtml" value="Login"></p:link>
-</h:body>
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Listagem de Produtos</ui:define>
+
+	<ui:define name="content">
+		<br></br>
+		<h2>Listagem de Produtos</h2>
+		<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
+			closable="true"></p:messages>
+		<p:dataTable id="tabelaProdutos" rows="10" reflow="true"
+			paginator="true" paginatorTemplate="{RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15"
+			style="padding-bottom:30px; padding-top:10px;" var="prod"
+			value="#{indexProduto.produtos}"
+			emptyMessage="Não há produtos cadastrados no sistema.">
+			<f:facet name="header">
+				Produtos
+			</f:facet>
+			<p:column headerText="Id" style="text-align: center">
+				<h:outputText value="#{prod.id}" />
+			</p:column>
+
+			<p:column headerText="Nome" style="text-align: center">
+				<h:outputText value="#{prod.nome}" />
+			</p:column>
+
+			<p:column headerText="Descrição" style="text-align: center">
+				<h:outputText value="#{prod.descricao}" />
+			</p:column>
+
+			<p:column headerText="Quantidade Disponível"
+				style="text-align: center">
+				<h:outputText value="#{prod.quantidade}" />
+			</p:column>
+
+			<p:column headerText="Preço de custo" style="text-align: center">
+				<h:outputText value="#{prod.valorCompra}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Preço de venda" style="text-align: center">
+				<h:outputText value="#{prod.valorVenda}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Categoria" style="text-align: center">
+				<h:outputText value="#{prod.categoria.nome}">
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
 </html>

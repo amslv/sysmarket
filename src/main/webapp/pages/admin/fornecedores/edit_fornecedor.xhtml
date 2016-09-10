@@ -42,7 +42,9 @@
 								value="#{editFornecedorBean.fornecedor.cnpj}"></p:inputMask>
 							<p:outputLabel for="email" value="Email:"></p:outputLabel>
 							<p:inputText id="email" type="email" required="true"
-								value="#{editFornecedorBean.fornecedor.email}"></p:inputText>
+								value="#{editFornecedorBean.fornecedor.email}">
+								<f:validator validatorId="emailValidator"></f:validator>
+							</p:inputText>
 							<p:outputLabel for="telefone" value="Telefone:"></p:outputLabel>
 							<p:inputMask mask="(99) 9999-9999" id="telefone" required="true"
 								value="#{editFornecedorBean.fornecedor.telefone}"></p:inputMask>
@@ -80,7 +82,7 @@
 					<p:tab title="Produtos">
 						<h2>Todos os Produtos Disponíveis</h2>
 						<p:dataTable id="produtosDisponiveis" value="#{editFornecedorBean.produtos}"
-							var="prod" selection="#{editFornecedorBean.fornecedor.produtos}"
+							var="prod" selectionMode="multiple" selection="#{editFornecedorBean.fornecedor.produtos}"
 							reflow="true" rowKey="#{prod.id}">
 							<f:facet name="header">
 									Produtos
@@ -113,45 +115,9 @@
 								</h:outputText>
 							</p:column>
 							<f:facet name="footer">
-								<p:commandButton process="produtosDisponiveis"
-									update=":formEdicaoFornecedores:produtosFornecidos" icon="ui-icon-search"
+								<p:commandButton process="produtosDisponiveis" icon="ui-icon-search"
 									value="Selecionar"/>
 							</f:facet>
-						</p:dataTable>
-						<h2>Produtos Fornecidos</h2>
-						<p:dataTable id="produtosFornecidos"
-							value="#{editFornecedorBean.fornecedor.produtos}" var="prod"
-							reflow="true">
-							<f:facet name="header">
-									Produtos
-								</f:facet>
-							<p:column headerText="Id" style="text-align: center">
-								<h:outputText value="#{prod.id}" />
-							</p:column>
-							<p:column headerText="Nome" style="text-align: center">
-								<h:outputText value="#{prod.nome}" />
-							</p:column>
-							<p:column headerText="Descrição" style="text-align: center">
-								<h:outputText value="#{prod.descricao}" />
-							</p:column>
-							<p:column headerText="Quantidade Disponível"
-								style="text-align: center">
-								<h:outputText value="#{prod.quantidade}" />
-							</p:column>
-							<p:column headerText="Preço de custo" style="text-align: center">
-								<h:outputText value="#{prod.valorCompra}">
-									<f:convertNumber type="currency" />
-								</h:outputText>
-							</p:column>
-							<p:column headerText="Preço de venda" style="text-align: center">
-								<h:outputText value="#{prod.valorVenda}">
-									<f:convertNumber type="currency" />
-								</h:outputText>
-							</p:column>
-							<p:column headerText="Categoria" style="text-align: center">
-								<h:outputText value="#{prod.categoria.nome}">
-								</h:outputText>
-							</p:column>
 						</p:dataTable>
 					</p:tab>
 				</p:tabView>
@@ -160,7 +126,7 @@
 			<h:panelGrid columns="2">
 				<p:commandButton id="salvar" value="Gravar" icon="fa fa-fw fa-check"
 					style="background: #000000; border: 1px solid #000000;"
-					action="#{editFornecedorBean.saveFornecedor()}"></p:commandButton>
+					action="#{editFornecedorBean.saveFornecedor}"></p:commandButton>
 				<p:button id="cancelar" icon="fa fa-fw fa-close"
 					style="background: #000000; border: 1px solid #000000;"
 					value="Cancelar" outcome="index_fornecedores"></p:button>

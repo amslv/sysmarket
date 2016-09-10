@@ -45,13 +45,12 @@
 					<p:column headerText="Ação" style="text-align: center">
 						<h:form>
 							<p:commandButton actionListener="#{cadastroClienteBean.excluir(cliente)}"
-								update=":tabelaCategorias" icon="fa fa-fw fa-close"
+								update=":tabelaProdutos" icon="fa fa-fw fa-close"
 								style="background: #000000; border: 1px solid #000000;">
 								<p:confirm header="Atenção"
 									message="Tem certeza que deseja excluir o cliente: #{cliente.nome}?"
 									icon="fa fa-fw fa-alert" />
 							</p:commandButton>
-
 							<p:confirmDialog global="true" showEffect="fade"
 								hideEffect="fade">
 								<p:commandButton value="Sim" type="button"

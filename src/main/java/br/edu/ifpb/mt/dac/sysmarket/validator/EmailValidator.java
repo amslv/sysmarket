@@ -5,13 +5,13 @@ import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Named;
 
 import org.primefaces.validate.ClientValidator;
  
-@Named
+@FacesValidator("emailValidator")
 public class EmailValidator implements Validator, ClientValidator {
  
     private Pattern pattern;
@@ -29,8 +29,8 @@ public class EmailValidator implements Validator, ClientValidator {
         }
          
         if(!pattern.matcher(value.toString()).matches()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", 
-                        value + " is not a valid email;"));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro de Validação", 
+                        value + " não é um email válido!"));
         }
     }
  
@@ -41,5 +41,4 @@ public class EmailValidator implements Validator, ClientValidator {
     public String getValidatorId() {
         return "emailValidator";
     }
-     
 }

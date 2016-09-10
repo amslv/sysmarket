@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+	<ui:define name="title">
+		Sysmarket :: Gerenciamento de Usuários
+	</ui:define>
+	<ui:define name="content">
+		<br />
+		<h2>Cadastro/Edição de Usuários</h2>
+		<p:fieldset>
+			<div class="ui-fluid">
+				<h:form id="formEdicaoUsuarios">
+					<p:tabView>
+						<p:tab title="Dados Pessoais">
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Nome:" for="nome" />
+								<p:inputText id="nome" required="true" />
+								<h:outputLabel value="Sobrenome:" for="sobrenome" />
+								<p:inputText id="sobrenome" required="true" />
+								<h:outputLabel value="CPF:" for="cpf" />
+								<p:inputMask id="cpf" mask="999.999.999-99" required="true" />
+								<h:outputLabel value="E-mail:" for="email" />
+								<p:inputText id="email" type="email" required="true">
+									<f:validator validatorId="emailValidator"></f:validator>
+								</p:inputText>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Endereço">
+							<h:panelGrid columns="2">
+								<p:outputLabel for="cep" value="CEP:"></p:outputLabel>
+								<p:inputMask id="cep" mask="99999-999" required="true"></p:inputMask>
+								<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
+								<p:inputText id="rua" required="true"></p:inputText>
+								<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
+								<p:inputText id="bairro" required="true"></p:inputText>
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</h:form>
+			</div>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>
