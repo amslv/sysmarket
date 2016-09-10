@@ -9,10 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="produtos")
+@NamedQueries({
+	@NamedQuery(name = "Produto.buscarPorNome", query = "SELECT p FROM Produto p WHERE LOWER(p.nome) = LOWER(:nome)"),
+	@NamedQuery(name = "Produto.buscarPorSKU", query = "SELECT p FROM Produto p WHERE p.sku = :sku"),
+	@NamedQuery(name = "Produto.totalProdutosSistema", query = "SELECT COUNT(p) FROM Produto p")})
 public class Produto implements Serializable {
 
 	/**

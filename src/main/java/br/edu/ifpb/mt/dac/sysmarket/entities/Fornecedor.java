@@ -11,11 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="fornecedores")
+@NamedQueries({
+	@NamedQuery(name = "Fornecedor.buscarPorNome", query = "SELECT f FROM Fornecedor f WHERE LOWER(f.nomeFantasia) = LOWER(:nome)"),
+	@NamedQuery(name = "Fornecedor.buscarPorCNPJ", query = "SELECT f FROM Fornecedor f WHERE f.cnpj = :cnpj"),
+	@NamedQuery(name = "Fornecedor.todosFornecedoresSistema", query = "SELECT COUNT(f) FROM Fornecedor f")})
 public class Fornecedor implements Serializable {
 
 	/**

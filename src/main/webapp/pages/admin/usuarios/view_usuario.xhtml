@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Usuários</ui:define>
+
+	<f:metadata>
+		<o:viewParam name="id" value="#{viewUsuarioBean.usuario}"
+			converter="#{usuarioConverter}" />
+		<f:event listener="#{editUsuarioBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<h2 style="margin-top: 60px;">Visualização de Usuário</h2>
+		<p:fieldset>
+			<h2>Informações básicas</h2>
+			<p:panelGrid columns="2">
+				<h:outputText value="Nome:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.nome}" />
+				<h:outputText value="Sobrenome:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.sobrenome}" />
+				<h:outputText value="CPF:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.cpf}" />
+				<h:outputText value="E-mail:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.email}" />
+				<h:outputText value="Telefone:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.telefone}" />
+				<h:outputText value="Tipo de Usuário:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.tipo}" />
+			</p:panelGrid>
+			<h2>Endereço</h2>
+			<p:panelGrid columns="2">
+				<h:outputText value="CEP:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.endereco.cep}" />
+				<h:outputText value="Rua:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.endereco.rua}" />
+				<h:outputText value="Número:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.endereco.numero}" />
+				<h:outputText value="Bairro:" />
+				<h:outputText value="#{viewUsuarioBean.usuario.endereco.bairro}" />
+				<h:outputText value="Cidade:" />
+				<h:outputText
+					value="#{viewUsuarioBean.usuario.endereco.cidade.nome}" />
+				<h:outputText value="Estado:" />
+				<h:outputText
+					value="#{viewUsuarioBean.usuario.endereco.estado.nome}" />
+			</p:panelGrid>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>
