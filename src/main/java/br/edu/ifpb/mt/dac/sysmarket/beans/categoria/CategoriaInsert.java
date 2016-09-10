@@ -20,7 +20,7 @@ public class CategoriaInsert extends AbstractManageBean implements Serializable 
 	 * 
 	 */
 	private static final long serialVersionUID = -8559018315064616512L;
-	
+
 	@Inject
 	private CategoriaService service;
 	private List<Categoria> categorias;
@@ -46,13 +46,13 @@ public class CategoriaInsert extends AbstractManageBean implements Serializable 
 			if(e.toString().contains("ConstraintViolationException")){
 				showFlashMessageError("Essa Categoria já existe!");
 			}else{
-			showFlashMessageError("Erro ao tentar salvar a categoria!");
+				showFlashMessageError("Erro ao tentar salvar a categoria!");
 			}
 			return "insert_cat";
 		}	
 		return "/insert_cat?faces-redirect=true";
 	}
-	
+
 	public void excluir(Categoria categoria){
 		try {
 			service.remove(categoria);
@@ -81,7 +81,7 @@ public class CategoriaInsert extends AbstractManageBean implements Serializable 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 
 
 }

@@ -14,11 +14,11 @@
 		<br></br>
 		<h2>Gerenciamento de Clientes</h2>
 		<p:fieldset legend="Cadastro de Clientes"
-			style="margin-top:20px; width:620px">
+			style="margin-top:20px">
 			<h:form>
 				<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
 					closable="true"></p:messages>
-				<p:panelGrid columns="2" style="width:600px;" layout="grid"
+				<p:panelGrid columns="2" layout="grid"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
 					styleClass="panelgrid-noborder">
 					<p:outputLabel for="nome" indicateRequired="true">Nome:</p:outputLabel>
@@ -32,13 +32,16 @@
 						update=":tabelaProdutos"></p:commandButton>
 				</p:panelGrid>
 			</h:form>
-			<p:panelGrid columns="1" style="width:600px;">
+			<p:panelGrid columns="1">
 				<p:dataTable id="tabelaProdutos"
 					style="padding-bottom:30px; padding-top:10px;" var="cliente"
 					value="#{cadastroClienteBean.clientes}" reflow="true">
 					<f:facet name="header">
             			Clientes
         			</f:facet>
+        			<p:column headerText="ID" styleClass="centralizarTexto">
+						<h:outputText value="#{cliente.id}" />
+					</p:column>
 					<p:column headerText="Nome" styleClass="centralizarTexto">
 						<h:outputText value="#{cliente.nome}" />
 					</p:column>

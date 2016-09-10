@@ -5,39 +5,42 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:o="http://omnifaces.org/ui">
+	xmlns:o="http://omnifaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/admin_template.xhtml">
 
 	<ui:define name="title">Sysmarket :: Usuários</ui:define>
 
 	<ui:define name="content">
-		<br/>
+		<br />
 		<h2>Listagem de Usuários</h2>
 		<p:toolbar>
 			<p:toolbarGroup align="left">
-				<p:button id="nvForn" value="Novo Usuário"
-					icon="fa fa-fw fa-plus"
+				<p:button id="nvForn" value="Novo Usuário" icon="fa fa-fw fa-plus"
 					outcome="edit_usuario"
 					style="background: #000000; border: 1px solid #000000;">
 				</p:button>
 			</p:toolbarGroup>
 		</p:toolbar>
-		<p:dataTable id="dataTableUsuarios" value="#{indexUsuarioBean.usuarios}" var="user">
+		<p:dataTable id="dataTableUsuarios" value="#{indexUsuario.usuarios}"
+			var="user">
 			<f:facet name="header">
 				Usuários Cadastrados no Sistema
 			</f:facet>
-			<p:column headerText="ID">
-				<h:outputText value="#{user.id}" />
-			</p:column>
-			<p:column headerText="Primeiro nome">
+			<p:column headerText="Nome">
 				<h:outputText value="#{user.nome}"></h:outputText>
 			</p:column>
 			<p:column headerText="Sobrenome">
 				<h:outputText value="#{user.sobrenome}"></h:outputText>
 			</p:column>
+			<p:column headerText="CPF">
+				<h:outputText value="#{user.cpf}"></h:outputText>
+			</p:column>
 			<p:column headerText="E-mail">
 				<h:outputText value="#{user.email}"></h:outputText>
+			</p:column>
+			<p:column headerText="Número de telefone">
+				<h:outputText value="#{user.telefone}"></h:outputText>
 			</p:column>
 			<p:column headerText="Nome de Usuário">
 				<h:outputText value="#{user.username}"></h:outputText>
@@ -46,14 +49,33 @@
 				<h:outputText value="#{user.tipo}"></h:outputText>
 			</p:column>
 			<p:column headerText="Ações">
-				<p:button id="edit_user" icon="fa fa-fw fa-pencil"
-						style="background: #000000; border: 1px solid #000000;">
-						<f:param name="id" value="#{user.id}"></f:param>
-					</p:button>
-					<p:button id="delete_produto" icon="fa fa-fw fa-close"
-						style="background: #000000; border: 1px solid #000000;">
-						<f:param name="id" value="#{user.id}"></f:param>
-					</p:button>
+				<p:button id="view_user" icon="fa fa-fw fa-search"
+					style="background: #000000; border: 1px solid #000000;">
+					<f:param name="id" value="#{user.id}"></f:param>
+				</p:button>
+				<p:button id="edit_user" outcome="edit_usuario"
+					icon="fa fa-fw fa-pencil"
+					style="background: #000000; border: 1px solid #000000;">
+					<f:param name="id" value="#{user.id}"></f:param>
+				</p:button>
+				<h:form>
+					<p:commandButton id="delete_user" icon="fa fa-fw fa-close"
+						style="background: #000000; border: 1px solid #000000;"
+						actionListener="#{indexUsuario.excluir(user)}"
+						update=":dataTableUsuarios">
+						<p:confirm header="Atenção"
+							message="Tem certeza que deseja excluir o usuário: #{user.nome}?"
+							icon="fa fa-fw fa-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Sim" type="button"
+							style="background: #000000; border: 1px solid #000000;"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Não" type="button"
+							style="background: #000000; border: 1px solid #000000;"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</h:form>
 			</p:column>
 		</p:dataTable>
 	</ui:define>
