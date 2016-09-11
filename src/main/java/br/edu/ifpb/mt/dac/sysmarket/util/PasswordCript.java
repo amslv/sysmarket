@@ -17,7 +17,7 @@ public class PasswordCript {
 		}
 	}
 	
-	private static String cript(String senha) throws Exception {
+	public static String cript(String senha) throws Exception {
 		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("SHA-256");
@@ -31,5 +31,12 @@ public class PasswordCript {
 		} catch (UnsupportedEncodingException e) {
 			throw new Exception("N�o foi poss�vel criptografar a senha!");
 		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		String senha = PasswordCript.cript("12345");
+		System.out.println(senha);
+		
 	}
 }

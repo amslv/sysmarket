@@ -13,6 +13,8 @@
 	<ui:define name="content">
 		<br></br>
 		<h2>Listagem de Pedidos</h2>
+		<p:messages id="messages" showDetail="true" showIcon="true"
+			closable="true"></p:messages>
 		<h:form>
 			<p:toolbar>
 				<p:toolbarGroup align="right">
@@ -55,11 +57,9 @@
 					</p:link>
 				</p:column>
 			</div>
-			<p:column headerText="Excluir"
-				styleClass="centralizarTexto">
+			<p:column headerText="Excluir" styleClass="centralizarTexto">
 				<h:form>
-					<p:commandLink value="Excluir"
-						update=":tabelaPedidos">
+					<p:commandLink value="Excluir" update=":tabelaPedidos">
 						<p:confirm header="Atenção"
 							message="Tem certeza que deseja excluir o pedido #{ped.id}?"
 							icon="ui-icon-alert" />

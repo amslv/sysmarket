@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Manipulação de Pedidos</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<h2>Cadastro/Edição de Pedidos</h2>
+		<p:messages id="messages" showDetail="true" showIcon="true"
+			closable="true"></p:messages>
+		<h:form id="formEdicaoPedidos">
+			<div class="ui-fluid">
+				<p:tabView>
+					<p:tab title="Itens do Pedido">
+						<p:dataTable id="itensDoPedido"
+							value="#{editPedidoBean.itensDoPedido}" var="item" reflow="true">
+							<f:facet name="header">
+								Itens do Pedido
+							</f:facet>
+							<p:column headerText="Nome" style="text-align: center;">
+								<h:outputText value="#{item.produto.nome}" />
+							</p:column>
+							<p:column headerText="Quantidade" style="text-align: center;">
+								<h:outputText value="#{item.quantidade}" />
+							</p:column>
+							<p:column headerText="Valor" style="text-align: center;">
+								<h:outputText value="#{item.produto.valorVenda}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+						<p:separator style="border: 1px solid #000000"></p:separator>
+						<p:toolbar>
+							<p:toolbarGroup align="left">
+								<p:commandButton value="Remover Item" id="removeItem"
+									icon="fa fa-fw fa-trash" action="#{pedidoInsert.removeItem}"
+									style="background: #000000; border: 1px solid #000000;"
+									update="itensDoPedido"></p:commandButton>
+							</p:toolbarGroup>
+							<p:toolbarGroup align="right">
+								<p:outputLabel for="valorTotal" value="Valor Total da Compra"></p:outputLabel>
+								<p:inputText id="valorTotal" readonly="true" size="1"
+									value="#{editPedidoBean.valorTotal}">
+									<f:convertNumber type="currency" />
+								</p:inputText>
+							</p:toolbarGroup>
+						</p:toolbar>
+						<br />
+						<p:dataTable id="produtosDisponiveis"
+							value="#{editPedidoBean.produtos}" var="prod" reflow="true"
+							selectionMode="multiple"
+							selection="#{editPedidoBean.produtosSelecionados}"
+							rowKey="#{prod.id}">
+							<f:facet name="header">
+								Produtos Disponíveis
+							</f:facet>
+							<p:column headerText="Nome" style="text-align: center;">
+								<h:outputText value="#{prod.nome}" />
+							</p:column>
+							<p:column headerText="Quantidade" style="text-align: center;">
+								<h:outputText value="#{prod.quantidade}" />
+							</p:column>
+							<p:column headerText="Valor" style="text-align: center;">
+								<h:outputText value="#{prod.valorVenda}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+						<p:separator style="border: 1px solid #000000"></p:separator>
+						<p:toolbar>
+							<p:toolbarGroup align="left">
+								<p:commandButton value="Selecionar produtos"
+									icon="fa fa-fw fa-check-square-o" id="submit"
+									style="background: #000000; border: 1px solid #000000;"
+									action="#{editPedidoBean.selecionarProdutos}"
+									update="itensDoPedido valorTotal"></p:commandButton>
+							</p:toolbarGroup>
+						</p:toolbar>
+					</p:tab>
+					<p:tab title="Cliente">
+						<p:dataTable id="dataTableClientes"
+							value="#{editPedidoBean.clientes}" var="cliente"
+							selectionMode="single" selection="#{editPedidoBean.cliente}"
+							rowKey="#{cliente.id}">
+							<f:facet name="header">
+								Todos os clientes
+							</f:facet>
+							<p:column headerText="ID" style="text-align: center;">
+								<h:outputText value="#{cliente.id}" />
+							</p:column>
+							<p:column headerText="Nome" style="text-align: center;">
+								<h:outputText value="#{cliente.nome}" />
+							</p:column>
+						</p:dataTable>
+					</p:tab>
+					<p:tab title="Pagamento">
+						<p:panelGrid columns="2">
+							<p:outputLabel for="dataVencimento" value="Data de Vencimento:"></p:outputLabel>
+							<p:calendar id="dataVencimento" locale="pt_BR"
+								pattern="dd/MM/yyyy" yearRange="-30:+10" navigator="true"
+								value="#{editPedidoBean.pagamento.dataVencimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:calendar>
+							<p:outputLabel for="dataPagamento" value="Data de Pagamento:"></p:outputLabel>
+							<p:calendar id="dataPagamento" locale="pt_BR"
+								pattern="dd/MM/yyyy" yearRange="-30:+10" navigator="true"
+								value="#{editPedidoBean.pagamento.dataPagamento}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:calendar>
+							<p:outputLabel for="formaDePagamento"
+								value="Forma de Pagamento escolhida:"></p:outputLabel>
+							<p:selectOneMenu id="formaDePagamento"
+								value="#{editPedidoBean.pagamento.tipo}">
+								<f:selectItems value="#{editPedidoBean.tipos()}" var="tipo"
+									itemLabel="#{tipo}" itemValue="#{tipo}"></f:selectItems>
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:tab>
+				</p:tabView>
+				<p:separator style="border: 1px solid #000000"></p:separator>
+				<p:toolbar>
+					<p:toolbarGroup align="left">
+						<p:commandButton value="Salvar Pedido"
+							icon="fa fa-fw fa-check-square-o" id="salvar"
+							style="background: #000000; border: 1px solid #000000;"
+							action="#{editPedidoBean.savePedido()}"
+						></p:commandButton>
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

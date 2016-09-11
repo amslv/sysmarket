@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,7 +44,14 @@ public class Pedido implements Serializable {
 	@JoinColumn
 	private Cliente cliente;
 	
-	public Pedido() {}
+	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn
+	private Pagamento pagamento;
+	
+	public Pedido() {
+		pagamento = new Pagamento();
+		cliente = new Cliente();
+	}
 
 	public Long getId() {
 		return id;
@@ -74,6 +82,12 @@ public class Pedido implements Serializable {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 
 	@Override

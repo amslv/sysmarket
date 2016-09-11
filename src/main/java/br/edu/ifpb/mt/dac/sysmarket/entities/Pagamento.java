@@ -10,8 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,10 +40,6 @@ public class Pagamento implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private TipoPagamento tipo;
-	
-	@OneToOne
-	@JoinColumn
-	private Pedido pedido;
 	
 	public Pagamento() {}
 
@@ -79,12 +73,6 @@ public class Pagamento implements Serializable {
 	public void setTipo(TipoPagamento tipo) {
 		this.tipo = tipo;
 	}
-	public Pedido getPedido() {
-		return pedido;
-	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
 
 	@Override
 	public int hashCode() {
@@ -95,7 +83,6 @@ public class Pagamento implements Serializable {
 		result = prime * result
 				+ ((dataVencimento == null) ? 0 : dataVencimento.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((pedido == null) ? 0 : pedido.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
@@ -124,11 +111,6 @@ public class Pagamento implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (pedido == null) {
-			if (other.pedido != null)
-				return false;
-		} else if (!pedido.equals(other.pedido))
 			return false;
 		if (tipo != other.tipo)
 			return false;
