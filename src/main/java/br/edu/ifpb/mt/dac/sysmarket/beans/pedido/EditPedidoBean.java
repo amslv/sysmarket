@@ -55,6 +55,7 @@ public class EditPedidoBean extends AbstractManagedBean {
 	public void preRenderView() {
 		if (pedido == null) {
 			pedido = new Pedido();
+			pedido.setDataPedido(new Date());
 			pedido.setItens(new ArrayList<>());
 			pedido.setCliente(new Cliente());
 			pedido.setValor(valorTotalDoPedido);
@@ -63,6 +64,7 @@ public class EditPedidoBean extends AbstractManagedBean {
 	
 	public String savePedido() {
 		try {
+			pedido.setValor(calcularValorPedido());
 			pedidoService.save(pedido);
 			showFlashMessageInfo("Pedido salvo com sucesso");
 		} catch (Exception e) {

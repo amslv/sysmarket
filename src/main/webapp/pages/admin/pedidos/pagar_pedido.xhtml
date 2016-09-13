@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<ui:define name="title">Sysmarket :: Pagamento de Pedido</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Data de Vencimento:" />
+				<p:calendar id="data_vencimento" locale="pt_BR" required="true">
+				</p:calendar>
+				<h:outputLabel value="Data de Pagamento:" />
+				<p:calendar id="data_pagamento" locale="pt_BR" required="true">
+				</p:calendar>
+				<h:outputLabel value="Valor do Pedido:" />
+				<p:inputText id="valorPedido" readonly="true"></p:inputText>
+				<h:outputLabel value="Forma de Pagamento:" />
+			</h:panelGrid>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>

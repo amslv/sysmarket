@@ -19,8 +19,7 @@
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:outputLabel>Filtrar:</p:outputLabel>
-					<p:inputText style="margin-left:5px;" value="#{indexPedido.filtro}"
-						placeholder="Digite o número do pedido"></p:inputText>
+					<p:inputText style="margin-left:5px;"></p:inputText>
 					<p:commandButton
 						style="margin-left:5px; background: #000000; border: 1px solid #000000	"
 						icon="fa fa-fw fa-search" update=":tabelaPedidos"></p:commandButton>
@@ -35,7 +34,7 @@
 		<p:dataTable id="tabelaPedidos" rows="10" paginator="true"
 			style="padding-bottom:30px; padding-top:10px;" var="ped"
 			value="#{indexPedido.pedidos}">
-			<p:column headerText="Id" styleClass="centralizarTexto">
+			<p:column headerText="Id"  style="text-align: center">
 				<h:outputText value="#{ped.id}" />
 			</p:column>
 
@@ -55,27 +54,10 @@
 					<f:convertNumber type="currency" />
 				</h:outputText>
 			</p:column>
-			<div>
-				<p:column headerText="Visualizar" style="text-align: center">
-					<p:link id="linkEditProd" value="Visualizar/Editar">
-						<f:param name="id" value="#{ped.id}"></f:param>
-					</p:link>
-				</p:column>
-			</div>
-			<p:column headerText="Excluir" styleClass="centralizarTexto">
-				<h:form>
-					<p:commandLink value="Excluir" update=":tabelaPedidos">
-						<p:confirm header="Atenção"
-							message="Tem certeza que deseja excluir o pedido #{ped.id}?"
-							icon="ui-icon-alert" />
-					</p:commandLink>
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sim" type="button"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-						<p:commandButton value="Não" type="button"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-					</p:confirmDialog>
-				</h:form>
+			<p:column headerText="Ações">
+				<p:button id="pagarPedido" icon="fa fa-fw fa-cash" outcome="pagar_pedido.xhtml">
+					<f:param name="id" value="#{ped.id}"></f:param>
+				</p:button>
 			</p:column>
 		</p:dataTable>
 	</ui:define>
