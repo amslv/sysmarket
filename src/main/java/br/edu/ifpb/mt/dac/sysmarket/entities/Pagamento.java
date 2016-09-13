@@ -3,6 +3,7 @@ package br.edu.ifpb.mt.dac.sysmarket.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,6 +43,10 @@ public class Pagamento implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private TipoPagamento tipo;
+	
+	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn
+	private Pedido pedido;
 	
 	public Pagamento() {}
 
@@ -72,6 +79,12 @@ public class Pagamento implements Serializable {
 	}
 	public void setTipo(TipoPagamento tipo) {
 		this.tipo = tipo;
+	}
+	public Pedido getPedido() {
+		return pedido;
+	}
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override

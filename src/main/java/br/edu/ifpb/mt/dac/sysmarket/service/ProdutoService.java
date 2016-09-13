@@ -44,4 +44,12 @@ public class ProdutoService implements IService<Produto> {
 	public List<Produto> getByName(String name) {
 		return dao.getByName(name);
 	}
+	
+	public List<Produto> getBySku(String sku) {
+		return dao.getBySku(sku);
+	}
+	
+	public Long getTotalProdutos() {
+		return dao.getTotalProdutos();
+	}
 }

@@ -43,4 +43,8 @@ public class FornecedorService implements IService<Fornecedor> {
 	public List<Fornecedor> getByNomeFantasia(String nomeFantasia) {
 		return dao.getByNomeFantasia(nomeFantasia);
 	}
+	
+	public Long getTotalFornecedores() {
+		return dao.getTotalFornecedores();
+	}
 }

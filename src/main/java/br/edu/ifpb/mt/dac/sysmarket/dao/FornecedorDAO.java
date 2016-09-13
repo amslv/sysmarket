@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.edu.ifpb.mt.dac.sysmarket.entities.Fornecedor;
 
@@ -20,5 +21,11 @@ public class FornecedorDAO extends AbstractDAO<Fornecedor> {
 		list = (List<Fornecedor>) em.createQuery("SELECT f FROM Fornecedor f WHERE f.nomeFantasia LIKE '%" + nomeFantasia + "%'", Fornecedor.class)
 				.getResultList();
 		return list;
+	}
+	
+	public Long getTotalFornecedores() {
+		Query query = getEntityManager().createNamedQuery("Fornecedor.todosFornecedoresSistema");
+		Long result = (Long) query.getSingleResult();
+		return result;
 	}
 }

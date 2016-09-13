@@ -15,26 +15,25 @@
 		<h2>Listagem de Pedidos</h2>
 		<p:messages id="messages" showDetail="true" showIcon="true"
 			closable="true"></p:messages>
-		<h:form>
-			<p:toolbar>
-				<p:toolbarGroup align="right">
-					<p:outputLabel>Filtrar:</p:outputLabel>
-					<p:inputText style="margin-left:5px;"></p:inputText>
-					<p:commandButton
-						style="margin-left:5px; background: #000000; border: 1px solid #000000	"
-						icon="fa fa-fw fa-search" update=":tabelaPedidos"></p:commandButton>
-				</p:toolbarGroup>
-				<p:toolbarGroup align="left">
-					<p:button id="novoPedido" value="Novo Pedido" icon="fa fa-fw fa-plus" outcome="edit_pedido"
-						style="margin-left:5px; background: #000000; border: 1px solid #000000	">
-					</p:button>
-				</p:toolbarGroup>
-			</p:toolbar>
-		</h:form>
+		<p:toolbar>
+			<p:toolbarGroup align="right">
+				<p:outputLabel>Filtrar:</p:outputLabel>
+				<p:inputText style="margin-left:5px;"></p:inputText>
+				<p:commandButton
+					style="margin-left:5px; background: #000000; border: 1px solid #000000	"
+					icon="fa fa-fw fa-search" update="tabelaPedidos"></p:commandButton>
+			</p:toolbarGroup>
+			<p:toolbarGroup align="left">
+				<p:button id="novoPedido" value="Novo Pedido"
+					icon="fa fa-fw fa-plus" outcome="edit_pedido"
+					style="margin-left:5px; background: #000000; border: 1px solid #000000	">
+				</p:button>
+			</p:toolbarGroup>
+		</p:toolbar>
 		<p:dataTable id="tabelaPedidos" rows="10" paginator="true"
 			style="padding-bottom:30px; padding-top:10px;" var="ped"
-			value="#{indexPedido.pedidos}">
-			<p:column headerText="Id"  style="text-align: center">
+			value="#{indexPedidoBean.pedidos}">
+			<p:column headerText="Id" style="text-align: center">
 				<h:outputText value="#{ped.id}" />
 			</p:column>
 
@@ -55,7 +54,8 @@
 				</h:outputText>
 			</p:column>
 			<p:column headerText="Ações">
-				<p:button id="pagarPedido" icon="fa fa-fw fa-cash" outcome="pagar_pedido.xhtml">
+				<p:button id="pagarPedido" icon="fa fa-fw fa-money"
+					outcome="pagar_pedido.xhtml">
 					<f:param name="id" value="#{ped.id}"></f:param>
 				</p:button>
 			</p:column>

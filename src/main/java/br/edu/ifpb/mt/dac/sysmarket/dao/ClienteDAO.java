@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.edu.ifpb.mt.dac.sysmarket.entities.Cliente;
 
@@ -19,5 +20,11 @@ public class ClienteDAO extends AbstractDAO<Cliente> {
 		List<Cliente> list = new ArrayList<Cliente>();
 		list = (List<Cliente>) em.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE '%"+name+"%'", Cliente.class).getResultList();
 		return list;
+	}
+	
+	public Long getTotalClientes() {
+		Query query = getEntityManager().createNamedQuery("Cliente.totalClientesNoSistema");
+		Long result = (Long) query.getSingleResult();
+		return result;
 	}
 }

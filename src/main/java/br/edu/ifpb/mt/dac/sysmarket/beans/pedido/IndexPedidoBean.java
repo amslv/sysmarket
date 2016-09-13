@@ -19,6 +19,7 @@ public class IndexPedidoBean extends AbstractManagedBean {
 	 * 
 	 */
 	private static final long serialVersionUID = -2706873427616176253L;
+	
 	private List<Pedido> pedidos;
 	@Inject
 	private PedidoService service;

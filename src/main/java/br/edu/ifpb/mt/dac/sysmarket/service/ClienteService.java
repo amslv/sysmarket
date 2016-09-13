@@ -43,4 +43,8 @@ public class ClienteService implements IService<Cliente> {
 	public List<Cliente> getByName(String name) {
 		return dao.getByName(name);
 	}
+	
+	public Long getTotalClientes() {
+		return dao.getTotalClientes();
+	}
 }
