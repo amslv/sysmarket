@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import br.edu.ifpb.mt.dac.sysmarket.dao.PedidoDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Pedido;
 import br.edu.ifpb.mt.dac.sysmarket.entities.TipoPagamento;
+import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class PedidoService implements IService<Pedido> {
 
@@ -18,14 +19,17 @@ public class PedidoService implements IService<Pedido> {
 	@Inject
 	private PedidoDAO dao;
 	
+	@TransacionalCdi
 	public void save(Pedido t) {
 		dao.save(t);
 	}
 
+	@TransacionalCdi
 	public Pedido update(Pedido t) {
 		return dao.update(t);
 	}
 
+	@TransacionalCdi
 	public void remove(Pedido t) {
 		dao.delete(t);
 	}

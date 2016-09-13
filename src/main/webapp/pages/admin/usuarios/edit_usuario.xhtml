@@ -10,9 +10,9 @@
 <ui:composition template="/WEB-INF/templates/admin_template.xhtml">
 
 	<f:metadata>
-		<o:viewParam name="id" value="#{editPedidoBean.pedido}"
-			converter="#{pedidoConverter}" />
-		<f:event listener="#{editPedidoBean.preRenderView()}"
+		<o:viewParam name="id" value="#{editUsuarioBean.usuario}"
+			converter="#{usuarioConverter}" />
+		<f:event listener="#{editUsuarioBean.preRenderView()}"
 			type="preRenderView" />
 	</f:metadata>
 

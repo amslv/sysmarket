@@ -10,13 +10,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Usuario;
 import br.edu.ifpb.mt.dac.sysmarket.service.UsuarioService;
 
 @Named(value="indexUsuario")
 @ViewScoped
-public class IndexUsuarioBean extends AbstractManageBean {
+public class IndexUsuarioBean extends AbstractManagedBean {
 
 	
 	/**

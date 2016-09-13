@@ -6,7 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Categoria;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Produto;
 import br.edu.ifpb.mt.dac.sysmarket.service.CategoriaService;
@@ -14,7 +14,7 @@ import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
 
 @Named(value="produtoInsert")
 @ViewScoped
-public class ProdutoEditBean extends AbstractManageBean {
+public class ProdutoEditBean extends AbstractManagedBean {
 
 	/**
 	 * 

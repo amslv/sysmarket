@@ -1,4 +1,4 @@
-package br.edu.ifpb.mt.dac.sysmarket.beans;
+package br.edu.ifpb.mt.dac.sysmarket.beans.util;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 
-public class AbstractManageBean implements Serializable {
+public class AbstractManagedBean implements Serializable {
 
 	/**
 	 * 

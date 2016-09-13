@@ -7,7 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Endereco;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
 import br.edu.ifpb.mt.dac.sysmarket.service.EnderecoService;
@@ -15,7 +15,7 @@ import br.edu.ifpb.mt.dac.sysmarket.service.EstadoService;
 
 @Named("enderecoEdit")
 @RequestScoped
-public class CadastroEnderecoBean extends AbstractManageBean {
+public class CadastroEnderecoBean extends AbstractManagedBean {
 
 	/**
 	 * 

@@ -6,13 +6,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Pedido;
 import br.edu.ifpb.mt.dac.sysmarket.service.PedidoService;
 
 @Named
 @RequestScoped
-public class IndexPedidoBean extends AbstractManageBean {
+public class IndexPedidoBean extends AbstractManagedBean {
 
 	/**
 	 * 

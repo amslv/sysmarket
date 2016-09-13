@@ -1,4 +1,4 @@
-package br.edu.ifpb.mt.dac.sysmarket.beans;
+package br.edu.ifpb.mt.dac.sysmarket.beans.util;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @Named
 @RequestScoped
-public class LogoutBean extends AbstractManageBean {
+public class LogoutBean extends AbstractManagedBean {
 
 	private static final long serialVersionUID = -7437667367775973347L;
 

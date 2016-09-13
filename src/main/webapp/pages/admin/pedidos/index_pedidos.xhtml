@@ -25,6 +25,11 @@
 						style="margin-left:5px; background: #000000; border: 1px solid #000000	"
 						icon="fa fa-fw fa-search" update=":tabelaPedidos"></p:commandButton>
 				</p:toolbarGroup>
+				<p:toolbarGroup align="left">
+					<p:button id="novoPedido" value="Novo Pedido" icon="fa fa-fw fa-plus" outcome="edit_pedido"
+						style="margin-left:5px; background: #000000; border: 1px solid #000000	">
+					</p:button>
+				</p:toolbarGroup>
 			</p:toolbar>
 		</h:form>
 		<p:dataTable id="tabelaPedidos" rows="10" paginator="true"

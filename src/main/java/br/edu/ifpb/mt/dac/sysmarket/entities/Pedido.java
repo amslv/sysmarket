@@ -44,12 +44,7 @@ public class Pedido implements Serializable {
 	@JoinColumn
 	private Cliente cliente;
 	
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn
-	private Pagamento pagamento;
-	
 	public Pedido() {
-		pagamento = new Pagamento();
 		cliente = new Cliente();
 	}
 
@@ -82,12 +77,6 @@ public class Pedido implements Serializable {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
 	}
 
 	@Override

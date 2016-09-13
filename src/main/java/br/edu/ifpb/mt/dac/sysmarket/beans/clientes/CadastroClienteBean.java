@@ -7,13 +7,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Cliente;
 import br.edu.ifpb.mt.dac.sysmarket.service.ClienteService;
 
 @Named
 @ViewScoped
-public class CadastroClienteBean extends AbstractManageBean {
+public class CadastroClienteBean extends AbstractManagedBean {
 
 	/**
 	 * 

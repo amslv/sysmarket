@@ -8,7 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifpb.mt.dac.sysmarket.beans.AbstractManageBean;
+import br.edu.ifpb.mt.dac.sysmarket.beans.util.AbstractManagedBean;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Cidade;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Endereco;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Estado;
@@ -21,7 +21,7 @@ import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
 
 @Named
 @ViewScoped
-public class EditFornecedorBean extends AbstractManageBean {
+public class EditFornecedorBean extends AbstractManagedBean {
 	
 	/**
 	 * 

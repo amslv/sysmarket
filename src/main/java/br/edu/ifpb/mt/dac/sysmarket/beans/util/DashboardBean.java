@@ -1,11 +1,11 @@
-package br.edu.ifpb.mt.dac.sysmarket.beans;
+package br.edu.ifpb.mt.dac.sysmarket.beans.util;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class DashboardBean extends AbstractManageBean {
+public class DashboardBean extends AbstractManagedBean {
 
 	/**
 	 * 

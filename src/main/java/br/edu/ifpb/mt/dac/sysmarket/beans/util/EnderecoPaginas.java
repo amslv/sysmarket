@@ -1,9 +1,9 @@
-package br.edu.ifpb.mt.dac.sysmarket.beans;
+package br.edu.ifpb.mt.dac.sysmarket.beans.util;
 
 public final class EnderecoPaginas {
 
 	public EnderecoPaginas() {
-		throw new UnsupportedOperationException("Esta classe não deve ser instanciada!");
+		throw new UnsupportedOperationException("Esta classe nï¿½o deve ser instanciada!");
 	}
 
 	private static final String REDIRECT_TRUE = "?faces-redirect=true";
