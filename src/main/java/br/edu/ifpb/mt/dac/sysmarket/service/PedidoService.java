@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import br.edu.ifpb.mt.dac.sysmarket.dao.PedidoDAO;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Pedido;
-import br.edu.ifpb.mt.dac.sysmarket.entities.TipoPagamento;
 import br.edu.ifpb.mt.dac.sysmarket.util.TransacionalCdi;
 
 public class PedidoService implements IService<Pedido> {
@@ -40,9 +39,6 @@ public class PedidoService implements IService<Pedido> {
 
 	public List<Pedido> getAll() {
 		return dao.getAll();
-	}
-
-	public void updatePedido(Pedido pedido, TipoPagamento pagamento) {		
 	}
 
 }

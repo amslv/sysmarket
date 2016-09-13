@@ -14,7 +14,6 @@ import br.edu.ifpb.mt.dac.sysmarket.entities.Cliente;
 import br.edu.ifpb.mt.dac.sysmarket.entities.ItemProduto;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Pedido;
 import br.edu.ifpb.mt.dac.sysmarket.entities.Produto;
-import br.edu.ifpb.mt.dac.sysmarket.entities.TipoPagamento;
 import br.edu.ifpb.mt.dac.sysmarket.service.ClienteService;
 import br.edu.ifpb.mt.dac.sysmarket.service.PedidoService;
 import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
@@ -105,10 +104,6 @@ public class EditPedidoBean extends AbstractManagedBean {
 			valorTotalDoPedido += itemProduto.getValor()*itemProduto.getQuantidade();
 		}
 		return valorTotalDoPedido;
-	}
-	
-	public TipoPagamento[] tipos() {
-		return TipoPagamento.values();
 	}
 	
 	public List<Produto> getProdutosDisponiveis() {

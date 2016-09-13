@@ -11,7 +11,6 @@
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Estado</class>
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Fornecedor</class>
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.ItemProduto</class>
-		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Pagamento</class>
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Pedido</class>
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Produto</class>
 		<class>br.edu.ifpb.mt.dac.sysmarket.entities.Usuario</class>

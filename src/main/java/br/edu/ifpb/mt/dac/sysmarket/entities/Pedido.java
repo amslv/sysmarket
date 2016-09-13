@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +42,8 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	@JoinColumn
 	private Cliente cliente;
+	
+	private Boolean pago;
 	
 	public Pedido() {
 		cliente = new Cliente();
@@ -77,6 +78,12 @@ public class Pedido implements Serializable {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	public Boolean getPago() {
+		return pago;
+	}
+	public void setPago(Boolean pago) {
+		this.pago = pago;
 	}
 
 	@Override
