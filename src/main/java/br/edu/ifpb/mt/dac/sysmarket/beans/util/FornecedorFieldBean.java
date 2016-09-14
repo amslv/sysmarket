@@ -15,6 +15,10 @@ import br.edu.ifpb.mt.dac.sysmarket.service.FornecedorService;
 @ViewScoped
 public class FornecedorFieldBean implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1367534386057439463L;
 	private List<Fornecedor> fornecedores;
 	private Fornecedor fornecedor;
 	@Inject
