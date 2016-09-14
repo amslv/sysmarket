@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import br.edu.ifpb.mt.dac.sysmarket.service.ClienteService;
 import br.edu.ifpb.mt.dac.sysmarket.service.FornecedorService;
+import br.edu.ifpb.mt.dac.sysmarket.service.PedidoService;
 import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
 
 @Named
@@ -24,15 +25,20 @@ public class DashboardBean extends AbstractManagedBean {
 	private ClienteService clienteService;
 	@Inject
 	private FornecedorService fornecedorService;
+	@Inject
+	private PedidoService pedidoService;
+	
 	private Long numProdutos;
 	private Long numClientes;
 	private Long numFornecedores;
+	private Long numPedidos;
 	
 	@PostConstruct
 	public void init() {
 		calcularTotalDeProdutos();
 		calcularTotalDeClientes();
 		calcularTotalDeFornecedores();
+		calcularTotalPedidos();
 	}
 	
 	public void calcularTotalDeProdutos() {
@@ -48,6 +54,11 @@ public class DashboardBean extends AbstractManagedBean {
 	public void calcularTotalDeFornecedores() {
 		numFornecedores = 0l;
 		numFornecedores = fornecedorService.getTotalFornecedores();
+	}
+	
+	public void calcularTotalPedidos() {
+		numPedidos = 0l;
+		numPedidos = pedidoService.getTotalPedidos();
 	}
 	
 	public Long getNumProdutos() {
@@ -72,5 +83,13 @@ public class DashboardBean extends AbstractManagedBean {
 	
 	public void setNumFornecedores(Long numFornecedores) {
 		this.numFornecedores = numFornecedores;
+	}
+	
+	public Long getNumPedidos() {
+		return numPedidos;
+	}
+	
+	public void setNumPedidos(Long numPedidos) {
+		this.numPedidos = numPedidos;
 	}
 }

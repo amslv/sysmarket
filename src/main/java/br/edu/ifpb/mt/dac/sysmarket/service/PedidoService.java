@@ -41,4 +41,7 @@ public class PedidoService implements IService<Pedido> {
 		return dao.getAll();
 	}
 
+	public Long getTotalPedidos() {
+		return dao.getTotalPedidos();
+	}
 }

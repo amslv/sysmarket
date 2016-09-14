@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -7,54 +8,75 @@
 
 <ui:composition template="/WEB-INF/templates/admin_template.xhtml">
 
-	<ui:define name="title">Sysmarket :: Listagem de Produtos</ui:define>
+	<ui:define name="title">Sysmarket :: Dashboard</ui:define>
 
 	<ui:define name="content">
 		<br></br>
-		<h2>Listagem de Produtos</h2>
-		<p:messages id="messageInsert" showDetail="true" autoUpdate="true"
-			closable="true"></p:messages>
-		<p:dataTable id="tabelaProdutos" rows="10" reflow="true"
-			paginator="true" paginatorTemplate="{RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15"
-			style="padding-bottom:30px; padding-top:10px;" var="prod"
-			value="#{indexProduto.produtos}"
-			emptyMessage="Não há produtos cadastrados no sistema.">
-			<f:facet name="header">
-				Produtos
-			</f:facet>
-			<p:column headerText="Id" style="text-align: center">
-				<h:outputText value="#{prod.id}" />
-			</p:column>
-
-			<p:column headerText="Nome" style="text-align: center">
-				<h:outputText value="#{prod.nome}" />
-			</p:column>
-
-			<p:column headerText="Descrição" style="text-align: center">
-				<h:outputText value="#{prod.descricao}" />
-			</p:column>
-
-			<p:column headerText="Quantidade Disponível"
-				style="text-align: center">
-				<h:outputText value="#{prod.quantidade}" />
-			</p:column>
-
-			<p:column headerText="Preço de custo" style="text-align: center">
-				<h:outputText value="#{prod.valorCompra}">
-					<f:convertNumber type="currency" />
-				</h:outputText>
-			</p:column>
-			<p:column headerText="Preço de venda" style="text-align: center">
-				<h:outputText value="#{prod.valorVenda}">
-					<f:convertNumber type="currency" />
-				</h:outputText>
-			</p:column>
-			<p:column headerText="Categoria" style="text-align: center">
-				<h:outputText value="#{prod.categoria.nome}">
-				</h:outputText>
-			</p:column>
-		</p:dataTable>
+		<h2>Dashboard</h2>
+		<p:panelGrid columns="4" layout="grid" styleClass="ui-panelgrid-blank"
+			columnClasses="ui-grid-col-3">
+			<p:fieldset id="fieldProdutos" style="border: 3px solid #12430e">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/horizontal.png"
+						width="70px" height="50px" />
+				</div>
+				<div style="display: inline; float: right !important;">
+					<br />
+					<h:outputText value="#{dashboardBean.numProdutos}"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+					<h:outputText value=" produtos"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+				</div>
+				<p:tooltip for="fieldProdutos"
+					value="Número de produtos cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldFornecedores" style="border: 3px solid #940000">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/people.png"
+						width="50px" height="50px" />
+				</div>
+				<div style="display: inline; float: right !important;">
+					<br />
+					<h:outputText value="#{dashboardBean.numFornecedores}"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+					<h:outputText value=" fornecedores"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+				</div>
+				<p:tooltip for="fieldFornecedores"
+					value="Número de fornecedores cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldClientes" style="border: 3px solid #1d478b">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage value="/resources/sysmarket/images/people.png"
+						width="50px" height="50px" />
+				</div>
+				<div style="display: inline; float: right !important;">
+					<br />
+					<h:outputText value="#{dashboardBean.numClientes}"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+					<h:outputText value=" clientes"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+				</div>
+				<p:tooltip for="fieldClientes"
+					value="Número de clientes cadastrados no sistema" />
+			</p:fieldset>
+			<p:fieldset id="fieldPedidos" styleClass="box box-success">
+				<div style="display: inline; float: left !important;">
+					<h:graphicImage
+						value="/resources/sysmarket/images/shopping-bag.png" width="50px"
+						height="50px" />
+				</div>
+				<div style="display: inline; float: right !important;">
+					<br />
+					<h:outputText value="#{dashboardBean.numPedidos}"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+					<h:outputText value=" pedidos"
+						style="font-family: 'Inconsolata'; font-size: 150%; text-align: center;" />
+				</div>
+				<p:tooltip for="fieldPedidos"
+					value="Número de pedidos cadastrados no sistema" />
+			</p:fieldset>
+		</p:panelGrid>
 	</ui:define>
 </ui:composition>
 </html>
