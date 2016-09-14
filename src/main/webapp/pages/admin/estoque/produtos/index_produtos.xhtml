@@ -23,14 +23,6 @@
 					style="background: #000000; border: 1px solid #000000"
 					outcome="insert_produto.xhtml" />
 			</p:toolbarGroup>
-			<p:toolbarGroup align="right">
-				<p:inputText style="margin-right: 5px"
-					placeholder="Digite o nome do produto.">
-				</p:inputText>
-				<p:commandButton id="button-filtro" value="Buscar"
-					icon="fa fa-fw fa-search"
-					style="background: #000000; border: 1px solid #000000" />
-			</p:toolbarGroup>
 		</p:toolbar>
 		<p:dataTable id="tabelaProdutos" rows="10" reflow="true"
 			paginator="true" paginatorTemplate="{RowsPerPageDropdown}"
@@ -79,10 +71,25 @@
 						outcome="insert_produto.xhtml">
 						<f:param name="id" value="#{prod.id}"></f:param>
 					</p:button>
-					<p:button id="linkDeleteProd" icon="fa fa-fw fa-close"
-						style="background: #000000; border: 1px solid #000000;">
-						<f:param name="id" value="#{prod.id}"></f:param>
-					</p:button>
+					<h:form>
+						<p:commandButton
+							actionListener="#{indexProduto.excluir(prod)}"
+							update=":tabelaProdutos" icon="fa fa-fw fa-close"
+							style="background: #000000; border: 1px solid #000000;">
+							<p:confirm header="Atenção"
+								message="Tem certeza que deseja excluir o produto: #{prod.nome}?"
+								icon="fa fa-fw fa-alert" />
+						</p:commandButton>
+
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Sim" type="button"
+								style="background: #000000; border: 1px solid #000000;"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="Não" type="button"
+								style="background: #000000; border: 1px solid #000000;"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</h:form>
 				</p:column>
 			</div>
 		</p:dataTable>

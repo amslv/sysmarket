@@ -23,8 +23,25 @@ public class IndexFornecedoresBean extends AbstractManagedBean {
 	private List<Fornecedor> fornecedores;
 	
 	@Inject
+	private Fornecedor fornecedor;
+	
+	@Inject
 	private FornecedorService service;
 	
+	public void excluir(Fornecedor fornecedor){
+		try {
+			service.remove(fornecedor);
+			atualizar();
+			showFlashMessageInfo("Fornecedor excluido!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void atualizar() {
+		fornecedores = service.getAll();
+	}
+
 	@PostConstruct
 	public void init() {
 		fornecedores = service.getAll();
@@ -36,5 +53,13 @@ public class IndexFornecedoresBean extends AbstractManagedBean {
 
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
+	}
+	
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+	
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 }

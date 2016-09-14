@@ -60,7 +60,7 @@
 				<p:tooltip for="fieldClientes"
 					value="Número de clientes cadastrados no sistema" />
 			</p:fieldset>
-			<p:fieldset id="fieldPedidos" styleClass="box box-success">
+			<p:fieldset id="fieldPedidos" style=" border: 3px solid #2e6b8a">
 				<div style="display: inline; float: left !important;">
 					<h:graphicImage
 						value="/resources/sysmarket/images/shopping-bag.png" width="50px"
@@ -77,6 +77,127 @@
 					value="Número de pedidos cadastrados no sistema" />
 			</p:fieldset>
 		</p:panelGrid>
+		<h:panelGrid columns="2">
+			<p:fieldset>
+				<h2
+					style="font-family: 'Inconsolata'; font-size: 130%; text-align: center;">Último
+					pedido feito no Sysmarket</h2>
+				<br></br>
+				<h:panelGrid columns="2">
+					<h:outputText value="Nome do Cliente:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{pedidoFieldBean.pedido.cliente.nome}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="Valor da Compra:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{pedidoFieldBean.pedido.valor}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="Data da Compra:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{pedidoFieldBean.pedido.dataPedido}">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							style="font-family: 'Inconsolata'; font-size: 120%;" />
+					</h:outputText>
+				</h:panelGrid>
+				<p:dataTable value="#{pedidoFieldBean.pedido.itens}" var="item">
+					<f:facet name="header">
+							Produtos Comprados
+						</f:facet>
+					<p:column headerText="Nome" style="text-align: center;">
+						<h:outputText value="#{item.produto.nome}" />
+					</p:column>
+					<p:column headerText="Quantidade" style="text-align: center;">
+						<h:outputText value="#{item.quantidade}" />
+					</p:column>
+					<p:column headerText="Valor" style="text-align: center;">
+						<h:outputText value="#{item.produto.valorVenda}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</p:fieldset>
+		</h:panelGrid>
+		<h:panelGrid columns="2">
+			<p:fieldset>
+				<h2
+					style="font-family: 'Inconsolata'; font-size: 130%; text-align: center;">Último
+					fornecedor cadastrado no Sysmarket</h2>
+				<br></br>
+				<h:panelGrid columns="2">
+					<h:outputText value="Nome fantasia:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.nomeFantasia}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="Razão social:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{fornecedorFieldBean.fornecedor.razaoSocial}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="CNPJ:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{fornecedorFieldBean.fornecedor.cnpj}">
+					</h:outputText>
+					<h:outputText value="E-mail:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{fornecedorFieldBean.fornecedor.email}">
+					</h:outputText>
+					<h:outputText value="Telefone:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="#{fornecedorFieldBean.fornecedor.telefone}">
+					</h:outputText>
+				</h:panelGrid>
+				<h2 style="font-family: 'Inconsolata'; font-size: 130%;">Endereço</h2>
+				<h:panelGrid columns="2">
+					<h:outputText value="Rua:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.rua}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="Número:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.numero}"
+						style="font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText value="CEP:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.cep}">
+					</h:outputText>
+					<h:outputText value="Bairro:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.bairro}">
+					</h:outputText>
+					<h:outputText value="Cidade:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.cidade.nome}">
+					</h:outputText>
+					<h:outputText value="Estado:"
+						style="color: #14aac8; font-family: 'Inconsolata'; font-size: 120%;" />
+					<h:outputText
+						value="#{fornecedorFieldBean.fornecedor.endereco.estado.nome}">
+					</h:outputText>
+				</h:panelGrid>
+				<p:dataTable value="#{fornecedorFieldBean.fornecedor.produtos}"
+					var="prod">
+					<f:facet name="header">
+							Produtos Fornecidos
+						</f:facet>
+					<p:column headerText="Nome" style="text-align: center;">
+						<h:outputText value="#{prod.nome}" />
+					</p:column>
+					<p:column headerText="Quantidade" style="text-align: center;">
+						<h:outputText value="#{prod.quantidade}" />
+					</p:column>
+					<p:column headerText="Valor" style="text-align: center;">
+						<h:outputText value="#{prod.valorCompra}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</p:fieldset>
+		</h:panelGrid>
 	</ui:define>
 </ui:composition>
 </html>

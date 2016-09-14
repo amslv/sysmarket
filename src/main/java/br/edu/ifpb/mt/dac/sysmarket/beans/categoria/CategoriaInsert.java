@@ -53,7 +53,7 @@ public class CategoriaInsert extends AbstractManagedBean implements Serializable
 		return "/insert_cat?faces-redirect=true";
 	}
 
-	public void excluir(Categoria categoria){
+	public void excluir(Categoria categoria) {
 		try {
 			service.remove(categoria);
 			atualiza();

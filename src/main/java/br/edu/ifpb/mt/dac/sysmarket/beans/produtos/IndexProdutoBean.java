@@ -22,10 +22,27 @@ public class IndexProdutoBean extends AbstractManagedBean {
 
 	private List<Produto> produtos;
 	@Inject
+	private Produto produto;
+	@Inject
 	private ProdutoService service;
 	
 	@PostConstruct
 	public void init() {
+		produtos = service.getAll();
+	}
+	
+	public void excluir(Produto produto){
+		try {
+			service.remove(produto);
+			atualizar();
+			showFlashMessageInfo("Produto excluido!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			showFlashMessageError("Falha ao excluir produto");
+		}
+	}
+
+	private void atualizar() {
 		produtos = service.getAll();
 	}
 
@@ -34,5 +51,11 @@ public class IndexProdutoBean extends AbstractManagedBean {
 	}
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
-	}	
+	}
+	public Produto getProduto() {
+		return produto;
+	}
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 }

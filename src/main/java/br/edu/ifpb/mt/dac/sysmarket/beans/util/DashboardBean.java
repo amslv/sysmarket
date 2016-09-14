@@ -9,6 +9,7 @@ import br.edu.ifpb.mt.dac.sysmarket.service.ClienteService;
 import br.edu.ifpb.mt.dac.sysmarket.service.FornecedorService;
 import br.edu.ifpb.mt.dac.sysmarket.service.PedidoService;
 import br.edu.ifpb.mt.dac.sysmarket.service.ProdutoService;
+import br.edu.ifpb.mt.dac.sysmarket.service.UsuarioService;
 
 @Named
 @ViewScoped
@@ -27,6 +28,8 @@ public class DashboardBean extends AbstractManagedBean {
 	private FornecedorService fornecedorService;
 	@Inject
 	private PedidoService pedidoService;
+	@Inject
+	private UsuarioService usuarioService;
 	
 	private Long numProdutos;
 	private Long numClientes;

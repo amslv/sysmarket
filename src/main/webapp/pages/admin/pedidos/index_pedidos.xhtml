@@ -16,13 +16,6 @@
 		<p:messages id="messages" showDetail="true" showIcon="true"
 			closable="true"></p:messages>
 		<p:toolbar>
-			<p:toolbarGroup align="right">
-				<p:outputLabel>Filtrar:</p:outputLabel>
-				<p:inputText style="margin-left:5px;"></p:inputText>
-				<p:commandButton
-					style="margin-left:5px; background: #000000; border: 1px solid #000000	"
-					icon="fa fa-fw fa-search" update="tabelaPedidos"></p:commandButton>
-			</p:toolbarGroup>
 			<p:toolbarGroup align="left">
 				<p:button id="novoPedido" value="Novo Pedido"
 					icon="fa fa-fw fa-plus" outcome="edit_pedido"
@@ -53,9 +46,15 @@
 					<f:convertNumber type="currency" />
 				</h:outputText>
 			</p:column>
-			<p:column headerText="Ações">
+			<p:column headerText="Ações" style="text-align: center">
+				<p:button id="viewForn" icon="fa fa-fw fa-search"
+					style="background: #000000; border: 1px solid #000000;"
+					outcome="view_pedidos">
+					<f:param name="id" value="#{ped.id}"></f:param>
+				</p:button>
 				<p:button id="edit_pedido" icon="fa fa-fw fa-pencil"
-					outcome="edit_pedido">
+					outcome="edit_pedido"
+					style="background: #000000; border: 1px solid #000000;">
 					<f:param name="id" value="#{ped.id}"></f:param>
 				</p:button>
 			</p:column>

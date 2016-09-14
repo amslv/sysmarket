@@ -66,10 +66,25 @@
 						outcome="edit_fornecedor.xhtml">
 						<f:param name="id" value="#{forn.id}"></f:param>
 					</p:button>
-					<p:button id="linkDeleteFornecedor" icon="fa fa-fw fa-close"
-						style="background: #000000; border: 1px solid #000000;">
-						<f:param name="id" value="#{forn.id}"></f:param>
-					</p:button>
+					<h:form>
+						<p:commandButton
+							actionListener="#{indexFornecedores.excluir(forn)}"
+							update=":tbl_forn" icon="fa fa-fw fa-close"
+							style="background: #000000; border: 1px solid #000000;">
+							<p:confirm header="Atenção"
+								message="Tem certeza que deseja excluir o fornecedor: #{forn.nomeFantasia}?"
+								icon="fa fa-fw fa-alert" />
+						</p:commandButton>
+
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Sim" type="button"
+								style="background: #000000; border: 1px solid #000000;"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="Não" type="button"
+								style="background: #000000; border: 1px solid #000000;"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</h:form>
 				</p:column>
 			</div>
 		</p:dataTable>

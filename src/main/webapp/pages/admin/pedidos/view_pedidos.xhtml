@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/admin_template.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="id" value="#{viewPedidoBean.pedido}"
+			converter="#{pedidoConverter}" />
+	</f:metadata>
+
+	<ui:define name="title">Sysmarket :: Visualização de Pedido</ui:define>
+
+	<ui:define name="content">
+		<h2 style="margin-top: 60px;">Visualização de Pedido</h2>
+		<h:panelGrid>
+			<p:fieldset>
+				<h2>Informações básicas</h2>
+				<p:panelGrid columns="2">
+					<h:outputText value="Valor do Pedido:" />
+					<h:outputText value="#{viewPedidoBean.pedido.valor}">
+						<f:convertNumber type="currency" />
+					</h:outputText>
+					<h:outputText value="Data do Pedido:" />
+					<h:outputText value="#{viewPedidoBean.pedido.dataPedido}">
+						<f:convertDateTime locale="pt_BR" timeStyle="short"
+							pattern="dd/MM/yyyy 'às' HH:mm" />
+					</h:outputText>
+					<h:outputText value="Cliente:" />
+					<h:outputText value="#{viewPedidoBean.pedido.cliente.nome}" />
+				</p:panelGrid>
+				<h2>Itens do Pedido</h2>
+				<p:dataTable id="dtProdutosFornecidos"
+					value="#{viewPedidoBean.pedido.itens}" var="item">
+					<f:facet name="header">
+					Produtos
+				</f:facet>
+					<p:column headerText="Nome" style="text-align: center">
+						<h:outputText value="#{item.produto.nome}" />
+					</p:column>
+					<p:column headerText="Quantidade" style="text-align: center">
+						<h:outputText value="#{item.quantidade}" />
+					</p:column>
+					<p:column headerText="Valor" style="text-align: center">
+						<h:outputText value="#{item.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</p:fieldset>
+		</h:panelGrid>
+	</ui:define>
+</ui:composition>
+</html>
